@@ -1,0 +1,8 @@
+{
+  "server": {
+    "baseDir": "prod",
+    "routes": {
+      "/node_modules": "node_modules"
+    }
+  }
+}
