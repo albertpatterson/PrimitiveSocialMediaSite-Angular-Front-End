@@ -1,0 +1,24 @@
+<div id="postItemRow" class="row">
+    <div class = col-sm-12>
+        <button id="addContent" class="btn btn-primary centered" data-toggle="collapse" data-target="#postForm">New Post</button>
+        <div id="postForm" class="collapse">
+            <div class="form-group">
+                <label for="postContainer">Post:</label>
+                <textarea class="form-control" name="post" id="postContainer" rows="5"></textarea>
+                <button id="submitPost" class="btn btn-primary centered">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!followedPosts">
+Loading...
+</div>
+<div *ngFor="let post of followedPosts" class="row">
+    <div class="col-xs-12">
+        <br>
+        <div class="postContainer">
+            <p class="posterName">{{post.poster}}</p>
+            <p class="posterContent">{{post.content}}</p>
+        </div>
+    </div>
+</div>
