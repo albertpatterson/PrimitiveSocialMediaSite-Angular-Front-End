@@ -19,15 +19,15 @@ This is a front end for the Primative Social Media Site project. This version of
     - [x] mock provided  
 
 ## Instalation
-Clone this repository, then run
+Clone this repository, then run<br>
 $> npm install
 
 ## Usage
-start the server by running
+start the server by running<br>
 $> npm start
 
-This will open the sign in page. Currently the required login credentials are:
-username: "member"
+This will open the sign in page. Currently the required login credentials are:<br>
+username: "member"<br>
 password: any character string between 1 and 10 characters in length
 
 Currently, there is no back end provided, but in the future both a servlets API and a nodejs API will be available.
