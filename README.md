@@ -19,6 +19,20 @@ This is a front end for the Primative Social Media Site project. This version of
     - [x] mock provided  
 
 ## Instalation
+Clone this repository, then run
+$> npm install
 
-## Usage 
+## Usage
+start the server by running
+$> npm start
+
+This will open the sign in page. Currently the required login credentials are:
+username: "member"
+password: any character string between 1 and 10 characters in length
+
+## TODO
+* update services to communicate with backend
+* add functionality for user to add post
+* add page for other user's profile
+* add functionality to send messages to other user
 
