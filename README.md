@@ -1,5 +1,4 @@
 # Primitive Social Media Site (Angular Front End)
-
 This is a front end for the Primative Social Media Site project. This version of the front end is writting using Angular to provide the following features
 - [x] components
   - [x] sign in page 
@@ -20,6 +19,8 @@ This is a front end for the Primative Social Media Site project. This version of
     - [x] mock provided  
 
 
+
 ## Instalation
 
 ## Usage 
+
