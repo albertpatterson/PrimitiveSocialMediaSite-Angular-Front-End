@@ -30,6 +30,8 @@ This will open the sign in page. Currently the required login credentials are:
 username: "member"
 password: any character string between 1 and 10 characters in length
 
+Currently, there is no back end provided, but in the future both a servlets API and a nodejs API will be available.
+
 ## TODO
 * update services to communicate with backend
 * add functionality for user to add post
