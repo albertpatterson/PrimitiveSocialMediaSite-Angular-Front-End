@@ -18,8 +18,6 @@ This is a front end for the Primative Social Media Site project. This version of
   - [ ] managing premium content added to the site
     - [x] mock provided  
 
-
-
 ## Instalation
 
 ## Usage 

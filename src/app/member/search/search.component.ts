@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit{
     ngOnInit(): void {
         this.route.params
         .switchMap(function(params: Params){
-            return this.searchService.search(params.pattern);     
+            return this.searchService.search(params["pattern"]);     
         }.bind(this))
         .subscribe(function(users: User[]){
             this.userGroups = this._toGrid(users,3);
