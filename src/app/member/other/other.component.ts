@@ -40,4 +40,12 @@ export class OtherComponent implements OnInit{
             }
         }.bind(this))   
     }
+
+    sendMessage(message: string): void {
+        alert(message);
+        this.postService.putPrivatePost(message)
+        .then(function(){
+            alert("Message Sent!");
+        }.bind(this))
+    }
 }

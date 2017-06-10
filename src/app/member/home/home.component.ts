@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit{
     followedPosts: Post[];
     messageCount: number;
 
-    postContent: string;
+    postFormVisible: boolean = true;
 
     constructor(
         private postService: PostService) {}
@@ -24,13 +24,11 @@ export class HomeComponent implements OnInit{
         this._updateFollowedPosts();
     }
 
-    addPost(): void{
-        this.postService.putPublicPost(this.postContent)
+    addPost(postContent: string): void{
+        alert(postContent)
+        this.postService.putPublicPost(postContent)
         .then(function(){
             return this._updateFollowedPosts()
-        }.bind(this))
-        .then(function(){
-            this.postContent = "";
         }.bind(this))
     }
 

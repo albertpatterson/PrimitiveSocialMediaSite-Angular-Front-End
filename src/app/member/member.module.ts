@@ -10,6 +10,7 @@ import {MessagesComponent} from './messages/messages.component';
 import {OtherComponent} from './other/other.component';
 import {SearchComponent} from './search/search.component';
 import {PremiumComponent} from './premium/premium.component';
+import {MessageFormComponent} from './utils/messageForm/message-form.component';
 
 
 import {AuthService} from './../services/auth.service'
@@ -29,7 +30,8 @@ import {PremiumService} from './services/premium.service';
                     MessagesComponent,
                     OtherComponent,
                     SearchComponent,
-                    PremiumComponent],
+                    PremiumComponent,
+                    MessageFormComponent],
 
     providers: [    AuthService,
                     MessageService, 

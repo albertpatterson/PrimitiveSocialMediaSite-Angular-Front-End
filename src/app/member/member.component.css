@@ -131,3 +131,7 @@ div.placeHolder150 {
 .centeredText {
     text-align: center;
 }
+
+.large {
+    width: 90%
+}
