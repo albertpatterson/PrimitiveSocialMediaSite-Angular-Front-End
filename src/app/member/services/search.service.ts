@@ -11,7 +11,7 @@ const mockUsers: User[] = [
 @Injectable()
 export class SearchService{
     search(pattern: string): Promise<User[]> {
-        // return Promise.resove(mockUsers);
-        return new Promise(r=>setTimeout(()=>r(mockUsers),1e3));                
+        const matches = mockUsers.filter(u=>u.name.match(new RegExp(pattern)));
+        return new Promise(r=>setTimeout(()=>r(matches),1e3));                
     }
 }

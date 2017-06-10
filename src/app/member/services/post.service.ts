@@ -9,8 +9,12 @@ const mockPosts = [
 
 @Injectable()
 export class PostService{
-    getPosts(): Promise<Post[]> {
+    getFollowedPosts(): Promise<Post[]> {
         // return Promise.resolve(mockPosts);
+        return new Promise(r=>setTimeout(()=>r(mockPosts),1e3));
+    }
+
+    getOwnPosts(user: string): Promise<Post[]>{
         return new Promise(r=>setTimeout(()=>r(mockPosts),1e3));
     }
 }

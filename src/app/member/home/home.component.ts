@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit{
         private postService: PostService) {}
 
     ngOnInit(): void {
-        this.postService.getPosts()
+        this.postService.getFollowedPosts()
         .then(function(followedPosts: Post[]){
             this.followedPosts=followedPosts;
         }.bind(this));

@@ -14,7 +14,7 @@ const routes: Routes = [
         component: MemberComponent,
         children: [
             {path: 'home', component: HomeComponent},
-            {path: 'other', component: OtherComponent},
+            {path: 'other/:name', component: OtherComponent},
             {path: 'messages', component: MessagesComponent},
             {path: 'search/:pattern', component: SearchComponent},
             {path: 'premium', component: PremiumComponent}

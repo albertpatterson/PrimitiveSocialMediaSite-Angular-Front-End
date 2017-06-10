@@ -45,6 +45,10 @@ div.placeHolder150 {
     margin: auto;
 }
 
+.fullwidth {
+    width: 100%;
+}
+
 #searchField {
     width: 60%;
     padding: 9px 0px;
@@ -95,7 +99,37 @@ div.placeHolder150 {
     font-size: 16px;
 }
 
-
 .thumbnail {
     max-width: 250px;
+    height: auto;
+}
+
+.fullsize {
+    max-width: 100%;
+    height: auto;
+}
+
+.floatLeft {
+    float:right;
+}
+
+.overflowHidden {
+    overflow: hidden;
+}
+
+.displayInline {
+    display: inline;
+}
+
+.followButton {
+    margin-left: 20%;
+    width: 30%;
+}
+
+.messageButton {
+    width: 30%;
+}
+
+.centeredText {
+    text-align: center;
 }
