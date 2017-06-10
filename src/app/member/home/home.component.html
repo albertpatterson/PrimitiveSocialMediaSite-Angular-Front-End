@@ -1,12 +1,23 @@
 <div id="postItemRow" class="row">
     <div class = col-sm-12>
-        <button id="addContent" class="btn btn-primary centered" data-toggle="collapse" data-target="#postForm">New Post</button>
-        <div id="postForm" class="collapse">
-            <div class="form-group">
+        <button id="addContent" class="btn btn-primary centered" data-toggle="collapse" data-target="#postFormContainer">New Post</button>
+        <div id="postFormContainer" class="collapse">
+            <form class="form-group" #postForm="ngForm" (ngSubmit)="addPost()">
                 <label for="postContainer">Post:</label>
-                <textarea class="form-control" name="post" id="postContainer" rows="5"></textarea>
-                <button id="submitPost" class="btn btn-primary centered">Submit</button>
-            </div>
+                <!--<textarea class="form-control" name="post" id="postContainer" rows="5" required #postContent></textarea>-->
+                <input  type="text" 
+                        class="form-control" 
+                        [(ngModel)]="postContent"
+                        name="postContent" 
+                        id="postContainer"
+                        rows="5" 
+                        required 
+                        #postContentInput="ngModel">
+                <button type="submit" 
+                        id="submitPost" 
+                        class="btn btn-primary centered" 
+                        [disabled]="!postForm.valid">Submit</button>
+            </form>
         </div>
     </div>
 </div>

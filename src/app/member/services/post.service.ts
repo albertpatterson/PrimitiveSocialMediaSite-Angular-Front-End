@@ -17,4 +17,14 @@ export class PostService{
     getOwnPosts(user: string): Promise<Post[]>{
         return new Promise(r=>setTimeout(()=>r(mockPosts),1e3));
     }
+
+    putPublicPost(content: string): Promise<void>{
+        const mockPost = {poster: "mockUser", content};
+        mockPosts.unshift(mockPost);
+        return Promise.resolve();
+    }
+
+    putPrivatePost(content: string): Promise<void>{
+        return Promise.resolve();
+    }
 }
