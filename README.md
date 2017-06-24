@@ -34,8 +34,6 @@ Currently, there is no back end provided, but in the future both a servlets API 
 
 ## TODO
 * update services to communicate with backend
-* add functionality for user to add post
-* add page for other user's profile
-* add functionality to send messages to other user
+* consider style improvements
 * add tests
 
