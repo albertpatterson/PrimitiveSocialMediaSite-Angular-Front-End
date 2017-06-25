@@ -40,8 +40,9 @@ export class SignInComponent implements OnInit{
     picture: any;
     pictureDiagnostic: string = "Your photo";
 
-    invalidCredentials: Boolean = false
-    invalidCredentialsDiagnostic: string = "Invalid username and/or password!";
+    invalidCredentials: Boolean = false;
+    invalidCredentialsBaseDiagnostic: string = "Invalid username and/or password!";  
+    invalidCredentialsDiagnostic: string = "";
     
     constructor(
         private authService: AuthService,
@@ -55,14 +56,23 @@ export class SignInComponent implements OnInit{
     signIn(): void {
 
         this.authService.tryLogin(this.username, this.password)
-        .then(function(isValid: boolean){
-            if(isValid){
-                this.router.navigate(['/member/home']);
-            }else{
-                this.invalidCredentials = true;
-                this.password = '';
-            }
-        }.bind(this))
+        .subscribe(
+            this._handleLoginResult.bind(this),
+            this._handleLoginError.bind(this))
+    }
+
+    _handleLoginResult(isValid: boolean): void{
+        if(isValid){
+            this.router.navigate(['/member/home']);
+        }else{
+            this._handleLoginError('');
+        }
+    }
+
+    _handleLoginError(error: any){
+        this.invalidCredentials = true;
+        this.password = '';
+        this.invalidCredentialsDiagnostic = this.invalidCredentialsBaseDiagnostic + (error?(" " + error):null);
     }
 
     signUp(): void {

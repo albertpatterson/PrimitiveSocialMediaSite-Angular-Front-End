@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes, Router } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import {AppRoutingModule} from './app-routing.module';
 
@@ -18,7 +19,8 @@ import {AuthService} from './services/auth.service'
   imports:      [ BrowserModule,
                   FormsModule,
                   MemberModule,
-                  AppRoutingModule
+                  AppRoutingModule,
+                  HttpModule
                    ],
   declarations: [ AppComponent,
                   NotFoundComponent,
