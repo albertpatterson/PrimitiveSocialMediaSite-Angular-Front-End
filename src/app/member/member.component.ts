@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Event } from '@angular/router';
+import { Router, Event, ActivatedRoute, Params } from '@angular/router';
 
 import {AuthService} from './../services/auth.service'
 import {MessageService} from './services/message.service';
@@ -10,13 +10,15 @@ import {MessageService} from './services/message.service';
   styleUrls: ['./member.component.css']  
 })
 export class MemberComponent implements OnInit{ 
+  username: string;
   messageCount: number;
   searchPattern: string = '';
 
   constructor(
       private authService: AuthService,
       private router: Router,
-      private messageService: MessageService) {}
+      private messageService: MessageService,
+      private activatedRoute: ActivatedRoute) {}
 
   _setMessageCount(): Promise<any>{
     return  this.messageService.getMessageCount()
@@ -26,7 +28,7 @@ export class MemberComponent implements OnInit{
   }
 
   search(): void{
-    this.router.navigate(['member/search', this.searchPattern]);
+    this.router.navigate(['member', this.username, 'search', this.searchPattern]);
   }
 
   signout(): void{
@@ -38,20 +40,18 @@ export class MemberComponent implements OnInit{
 
   ngOnInit(): void{
 
-    this.authService.checkLogin()
-    .then(this._setMessageCount.bind(this));
+      this.activatedRoute.params 
+      .subscribe(function(params: Params){
+        console.log(params)
+        this.username = params["ownName"];
+        console.log('username', this.username)
 
-    this.router.events.subscribe(function(event: Event){
-      if(event.constructor.name === 'NavigationStart'){
-        this.authService.checkLogin()
-        .then(function(isValid: boolean){
-          if(isValid){
-            this._setMessageCount();
-          }else{
-            this.router.navigate(['/signIn']);
-          }
-        }.bind(this));
-      }
-    }.bind(this))
+          this.authService.assertLoggedIn(this.username)
+          .then(this._setMessageCount.bind(this))
+          .catch((e:Error) => console.log(e));
+
+        // check login
+
+      }.bind(this))   
   }
 }

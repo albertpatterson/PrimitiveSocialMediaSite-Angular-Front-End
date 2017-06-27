@@ -63,7 +63,7 @@ export class SignInComponent implements OnInit{
 
     _handleLoginResult(isValid: boolean): void{
         if(isValid){
-            this.router.navigate(['/member/home']);
+            this.router.navigate(["member", this.username, "home"]);
         }else{
             this._handleLoginError('');
         }

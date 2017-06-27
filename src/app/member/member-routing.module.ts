@@ -10,11 +10,11 @@ import {PremiumComponent} from './premium/premium.component';
 
 
 const routes: Routes = [
-    {   path: 'member',
+    {   path: 'member/:ownName',
         component: MemberComponent,
         children: [
             {path: 'home', component: HomeComponent},
-            {path: 'other/:name', component: OtherComponent},
+            {path: 'other/:othersName', component: OtherComponent},
             {path: 'messages', component: MessagesComponent},
             {path: 'search/:pattern', component: SearchComponent},
             {path: 'premium', component: PremiumComponent}

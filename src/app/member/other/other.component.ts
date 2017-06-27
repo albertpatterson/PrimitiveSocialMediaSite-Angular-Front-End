@@ -25,7 +25,7 @@ export class OtherComponent implements OnInit{
     ngOnInit(): void{
        this.activatedRoute.params 
         .switchMap(function(params: Params){
-            return this.searchService.search(`^${params["name"]}$`);     
+            return this.searchService.search(`^${params["othersName"]}$`);     
         }.bind(this))
         .subscribe(function(users: User[]){
             if(users.length===1){
