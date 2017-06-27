@@ -42,16 +42,16 @@ export class MemberComponent implements OnInit{
 
       this.activatedRoute.params 
       .subscribe(function(params: Params){
+
         console.log(params)
+        // get the username
         this.username = params["ownName"];
         console.log('username', this.username)
 
+          // verify login
           this.authService.assertLoggedIn(this.username)
           .then(this._setMessageCount.bind(this))
           .catch((e:Error) => console.log(e));
-
-        // check login
-
       }.bind(this))   
   }
 }
