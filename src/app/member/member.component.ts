@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Event, ActivatedRoute, Params } from '@angular/router';
 
-import {AuthService} from './../services/auth.service'
-import {MessageService} from './services/message.service';
+// import {AuthService} from './../services/auth.service'
+import { AuthService } from './../services/mock_auth.service';
+// import {MessageService} from './services/message.service';
+import {MessageService} from './services/mock_message.service';
 
 
 @Component({
@@ -10,9 +12,13 @@ import {MessageService} from './services/message.service';
   styleUrls: ['./member.component.css']  
 })
 export class MemberComponent implements OnInit{ 
+    
   username: string;
   messageCount: number;
   searchPattern: string = '';
+  othersName: string;
+
+  view: string = "home";
 
   constructor(
       private authService: AuthService,
@@ -21,14 +27,24 @@ export class MemberComponent implements OnInit{
       private activatedRoute: ActivatedRoute) {}
 
   _setMessageCount(): Promise<any>{
-    return  this.messageService.getMessageCount()
+    return  this.messageService.getMessageCount(this.username)
             .then(function(messageCount: number){
               this.messageCount=messageCount;
             }.bind(this));
   }
 
-  search(): void{
-    this.router.navigate(['member', this.username, 'search', this.searchPattern]);
+  go(view: string): void{
+    this.authService.assertLoggedIn(this.username)
+      .then(this._setMessageCount.bind(this))
+      .catch((e:Error) => console.log(e));
+
+    this.view = view;
+  }
+
+  visitUser(othersName: string){
+    console.log('visit other!', othersName)
+    this.view = "other";
+    this.othersName = othersName;
   }
 
   signout(): void{
@@ -45,7 +61,7 @@ export class MemberComponent implements OnInit{
 
         console.log(params)
         // get the username
-        this.username = params["ownName"];
+        this.username = params["ownName"];;
         console.log('username', this.username)
 
           // verify login

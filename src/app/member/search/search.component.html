@@ -4,7 +4,8 @@ Loading...
 <div *ngFor="let userGroup of userGroups" class="row">
     <div *ngFor="let user of userGroup">
         <div class="col-sm-2 overflowHidden">
-            <a routerLink="../../other/{{user.name}}">
+            <!--<a routerLink="../../other/{{user.name}}">-->
+            <a (click)="_selectUser(user.name)">
                 <img src="{{user.picture}}" alt="{{user.name}}'s photo'" class="fullsize centered">
             </a>
         </div>
@@ -12,7 +13,7 @@ Loading...
             <div>
                 <p>Name: {{user.name}}</p>
                 <p>Age: {{user.age}}</p>
-                <p>Location: {{user.locatoin}}</p>
+                <p>Location: {{user.location}}</p>
                 <p>Business: {{user.business}}</p>
             </div>
         </div>

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
-import {SearchService} from './../services/search.service';
+// import {SearchService} from './../services/search.service';
+import {SearchService} from './../services/mock_search.service';
 
 import { ActivatedRoute, Params }     from '@angular/router';
 
@@ -10,6 +11,8 @@ import { User } from './../User';
 
 @Component({
     selector: 'member-search',
+    inputs: ['username', 'searchPattern'],
+    outputs: ['userSelect'],
     templateUrl: './search.component.html',
     styleUrls: [
                     './../member.component.css',
@@ -18,18 +21,28 @@ import { User } from './../User';
 })
 export class SearchComponent implements OnInit{
 
-    pattern: string;
+    public username: string;
+    public searchPattern: string;
+
+    public userSelect: EventEmitter<string> = new EventEmitter();
+
+    _selectUser(name: string): void{
+        console.log('selected '+name);
+        this.userSelect.next(name);
+    }
+
     userGroups: User[][];
 
     constructor(private searchService: SearchService,
                 private route: ActivatedRoute){ }
 
     ngOnInit(): void {
-        this.route.params
-        .switchMap(function(params: Params){
-            return this.searchService.search(params["pattern"]);     
-        }.bind(this))
-        .subscribe(function(users: User[]){
+        // this.route.params
+        // .switchMap(function(params: Params){
+        //     return this.searchService.search(params["pattern"]);     
+        // }.bind(this))
+        this.searchService.search(this.searchPattern) 
+        .then(function(users: User[]){
             this.userGroups = this._toGrid(users,3);
         }.bind(this))   
     }
