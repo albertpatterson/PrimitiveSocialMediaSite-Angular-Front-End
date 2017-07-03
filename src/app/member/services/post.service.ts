@@ -17,18 +17,19 @@ export class PostService{
     ){}
 
     getFollowedPosts(username: string): Promise<Post[]> {
-        return this._getPosts(username, "followed");
+        return this._getPosts(username, username, "followed");
     }
 
-    getOwnPosts(username: string): Promise<Post[]>{
-        return this._getPosts(username, "own");
+    getOwnPosts(username: string, poster: string): Promise<Post[]>{
+        return this._getPosts(username, poster, "own");
     }
 
-    _getPosts(username: string, type: string): Promise<Post[]>{
+    private _getPosts(username: string, poster: string, type: string): Promise<Post[]>{
 
         return new Promise((res: Function, rej: Function)=>{
             let data = new URLSearchParams();
             data.append('username', username);
+            data.append('poster', poster);
             data.append('type', type);
 
             let resolver = (resp: Response)=>res(resp.json().data);
@@ -64,7 +65,7 @@ export class PostService{
             data.append('username', username);
             data.append('index', idx.toString());
 
-            this.http.post(this._postUrl, data)
+            this.http.delete(this._postUrl, {search: data})
             .toPromise()
             .then((resp: Response)=>assertStatus(res, resp, 204, "Could not delete post."))
             .catch((err: any)=>handleError(rej, err))

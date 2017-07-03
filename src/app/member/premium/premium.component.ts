@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 
-// import {PremiumService} from './../services/premium.service';
-import {PremiumService} from './../services/mock_premium.service';
+import {PremiumService} from './../services/premium.service';
+// import {PremiumService} from './../services/mock_premium.service';
+
+import {PremiumContent} from '../PremiumContent';
 
 
 @Component({
@@ -20,9 +22,10 @@ export class PremiumComponent implements OnInit{
 
     ngOnInit(): void{
 
-        this.premiumService.getPremiumItems(this.username)
-        .then(function(premiumItems: string[]){
-            this.premiumGroups = this._toGrid(premiumItems,3);
+        this.premiumService.getPremium(this.username)
+        .then(function(premiumItems: PremiumContent[]){
+            let premiumStrings = premiumItems.map((item: PremiumContent)=>item.content);
+            this.premiumGroups = this._toGrid(premiumStrings,3);
         }.bind(this))
     }
 

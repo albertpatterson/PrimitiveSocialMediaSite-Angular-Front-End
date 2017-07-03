@@ -11,6 +11,8 @@ import { PostService } from '../services/post.service';
 import {MessageService} from './../services/message.service';
 // import {MessageService} from './../services/mock_message.service';
 
+import {SubscriptionService} from './../services/subscription.service';
+
 
 import { User } from '../User';
 import { Post } from '../Post';
@@ -33,7 +35,7 @@ export class OtherComponent implements OnInit{
         private searchService: SearchService,
         private postService: PostService,
         private messageService: MessageService,
-        private activatedRoute: ActivatedRoute){}
+        private subscriptionService: SubscriptionService){}
 
     ngOnInit(): void{
     //    this.activatedRoute.params 
@@ -46,7 +48,7 @@ export class OtherComponent implements OnInit{
         .then(function(users: User[]){
             if(users.length===1){
                 this.user = users[0];
-                this.postService.getOwnPosts(this.user.name)
+                this.postService.getOwnPosts(this.username, this.user.name)
                 .then(function(ownPosts: Post[]){
                     this.ownPosts = ownPosts;
                 }.bind(this))
@@ -59,6 +61,12 @@ export class OtherComponent implements OnInit{
 
     sendMessage(message: string): void {
         alert(message);
-        this.messageService.addMessage(this.username, message, this.othersName);
+        this.messageService.addMessage(this.username, message, this.othersName)
+        .then(()=>alert("Message Sent!"))
+    }
+
+    subscribe(): void {
+        this.subscriptionService.addSubscription(this.username, this.user.name)
+        .then(()=>alert("Subscribed!"))
     }
 }

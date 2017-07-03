@@ -1,15 +1,61 @@
 import {Injectable} from '@angular/core';
 
-const mockPremiumItems = ["http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-21.jpg",
-                        "http://cdn2-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-8.jpg",
-                        "http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg",
-                        "http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-5.jpg",
-                        "https://www.cesarsway.com/sites/newcesarsway/files/styles/large_article_preview/public/All-about-puppies--Cesar%E2%80%99s-tips%2C-tricks-and-advice.jpg?itok=bi9xUvwe"];
+import {Http, Response, URLSearchParams} from '@angular/http';
+
+import {assertStatus, handleError} from '../../utils/handleResponse';
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class PremiumService{
-    getPremiumItems(): Promise<string[]> {
-        // return Promise.resolve(mockPremiumItems);
-        return new Promise(r=>setTimeout(()=>r(mockPremiumItems),1e3));        
+export class PremiumService {
+    
+    private _premiumUrl = "/premium";
+    
+    constructor(
+        private http: Http
+    ){}
+
+    getPremium(username: string): Promise<string>{
+        return new Promise((res: Function, rej: Function)=>{
+            let data = new URLSearchParams();
+            data.append("username", username);
+
+            let resolver = (resp: Response)=>res(resp.json().data);
+
+            this.http.get(this._premiumUrl, {search: data})
+            .toPromise()
+            .then((resp: Response)=>assertStatus(resolver, resp, 200, "Unable to get premium items"))
+            .catch((err: any)=>handleError(rej, err))
+        });
+    }
+
+    addPremium(username: string, content: string): Promise<{}>{
+        return new Promise((res:Function, rej: Function)=>{
+            let data = new URLSearchParams();
+            data.append("username", username);
+            data.append("item", content);
+
+            let resolver = ()=>res();
+
+            this.http.post(this._premiumUrl, data)
+            .toPromise()
+            .then((resp: Response)=>assertStatus(resolver, resp, 201, "Unable to add premium item"))
+            .catch((err: any)=>handleError(rej, err))
+        });
+    }
+
+    deletePremium(username: string, index: number): Promise<{}>{
+        return new Promise((res:Function, rej: Function)=>{
+            let data = new URLSearchParams();
+            data.append("username", username);
+            data.append("index", index.toString());
+
+            let resolver = ()=>res();
+
+            this.http.delete(this._premiumUrl, {search: data})
+            .toPromise()
+            .then((resp: Response)=>assertStatus(resolver, resp, 204, "Unable to delete premium item"))
+            .catch((err: any)=>handleError(rej, err))
+        });
     }
 }
