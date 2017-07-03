@@ -1,30 +1,73 @@
 import { Injectable } from '@angular/core'
+import {Http, Response, URLSearchParams} from '@angular/http';
+
 import { Post } from './../Post';
 
-const mockPosts = [
-            {poster: 'Carl', content: "From Carl"},
-            {poster: 'Alan', content: "From Alan"},
-            {poster: 'Mike', content: "From Mike"}
-        ];
+import {assertStatus, handleError} from '../../utils/handleResponse';
+
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PostService{
-    getFollowedPosts(): Promise<Post[]> {
-        // return Promise.resolve(mockPosts);
-        return new Promise(r=>setTimeout(()=>r(mockPosts),1e3));
+
+    private _postUrl: string = "/post";
+
+    constructor(
+        private http: Http
+    ){}
+
+    getFollowedPosts(username: string): Promise<Post[]> {
+        return this._getPosts(username, "followed");
     }
 
-    getOwnPosts(user: string): Promise<Post[]>{
-        return new Promise(r=>setTimeout(()=>r(mockPosts),1e3));
+    getOwnPosts(username: string): Promise<Post[]>{
+        return this._getPosts(username, "own");
     }
 
-    putPublicPost(content: string): Promise<void>{
-        const mockPost = {poster: "mockUser", content};
-        mockPosts.unshift(mockPost);
-        return Promise.resolve();
+    _getPosts(username: string, type: string): Promise<Post[]>{
+
+        return new Promise((res: Function, rej: Function)=>{
+            let data = new URLSearchParams();
+            data.append('username', username);
+            data.append('type', type);
+
+            let resolver = (resp: Response)=>res(resp.json().data);
+
+            this.http.get(this._postUrl, {search: data})
+            .toPromise()
+            .then((resp: Response)=>assertStatus(resolver, resp, 200, "Could not get posts."))
+            .catch((err: any)=>handleError(rej, err))
+        });
     }
 
-    putPrivatePost(content: string): Promise<void>{
-        return Promise.resolve();
+    // }
+
+    addPost(username: string, content: string): Promise<{}>{
+
+        console.log('add post', username, content)
+
+        return new Promise((res: Function, rej: Function)=>{
+                    let data = new URLSearchParams();
+                    data.append('username', username);
+                    data.append('content', content);
+
+                    this.http.post(this._postUrl, data)
+                    .toPromise()
+                    .then((resp: Response)=>assertStatus(res, resp, 201, "Could not add post."))
+                    .catch((err: any)=>handleError(rej, err))
+                });    
+    }
+
+    deletePost(username: string, idx: number): Promise<{}>{
+        return new Promise((res: Function, rej: Function)=>{
+            let data = new URLSearchParams();
+            data.append('username', username);
+            data.append('index', idx.toString());
+
+            this.http.post(this._postUrl, data)
+            .toPromise()
+            .then((resp: Response)=>assertStatus(res, resp, 204, "Could not delete post."))
+            .catch((err: any)=>handleError(rej, err))
+        });    
     }
 }

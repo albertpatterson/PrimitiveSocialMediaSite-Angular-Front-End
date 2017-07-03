@@ -5,9 +5,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { SearchService } from '../services/mock_search.service';
 
 
-// import { PostService } from '../services/post.service';
-import {PostService} from './../services/mock_post.service';
-import {MessageService} from './../services/mock_message.service';
+import { PostService } from '../services/post.service';
+// import {PostService} from './../services/mock_post.service';
+
+import {MessageService} from './../services/message.service';
+// import {MessageService} from './../services/mock_message.service';
 
 
 import { User } from '../User';
@@ -57,6 +59,6 @@ export class OtherComponent implements OnInit{
 
     sendMessage(message: string): void {
         alert(message);
-        this.messageService.addMessage(this.othersName, this.username, message);
+        this.messageService.addMessage(this.username, message, this.othersName);
     }
 }

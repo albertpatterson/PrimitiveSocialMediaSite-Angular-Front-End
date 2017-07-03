@@ -12,9 +12,10 @@
         <div id="searchForm" class="col-sm-4">
             <!--<form action="member/search" method="get">-->
             <div class="fullwidth">
-                <input id="searchField" type="text" [(ngModel)]="searchPattern">
+                <!--<input id="searchField" type="text" [(ngModel)]="searchPattern">-->
                 <!--<button id="searchButton" type="submit" class="btn btn-success" (click)="search()">Search</button>-->
-                <button id="searchButton" type="submit" class="btn btn-success" (click)="go('search')">Search</button>
+                <input type="text" id="searchField" #searchField (keypress)="searchOnEnter($event)">
+                <button id="searchButton" type="submit" class="btn btn-success" (click)="search(searchField.value)">Search</button>
             </div>
             <!--</form>-->
         </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-// import { AuthService } from './../services/auth.service';
-import { AuthService } from './../services/mock_auth.service';
+import { AuthService } from './../services/auth.service';
+// import { AuthService } from './../services/mock_auth.service';
 
 class Model {
     username: "";
@@ -57,20 +57,16 @@ export class SignInComponent implements OnInit{
     signIn(): void {
 
         this.authService.tryLogin(this.username, this.password)
-        .then(this._handleLoginResult.bind(this))
-        .catch(this._handleLoginError.bind(this));
+        .then( this._handleLoginResult.bind(this) )
+        .catch( this._handleLoginError.bind(this) );
     }
 
-    _handleLoginResult(isValid: boolean): void{
-        if(isValid){
-            // this.router.navigate(["member", this.username, "home"])
-            this.router.navigate(["member", this.username]);
-        }else{
-            this._handleLoginError('');
-        }
+    _handleLoginResult(isValid: boolean): void {
+        this.router.navigate(["member", this.username]);
     }
 
     _handleLoginError(error: any){
+        console.log('login err', error)
         this.invalidCredentials = true;
         this.password = '';
         this.invalidCredentialsDiagnostic = this.invalidCredentialsBaseDiagnostic + (error?(" " + error):null);

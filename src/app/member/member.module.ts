@@ -13,15 +13,15 @@ import {PremiumComponent} from './premium/premium.component';
 import {MessageFormComponent} from './utils/messageForm/message-form.component';
 
 
-// import {AuthService} from './../services/auth.service'
-// import {MessageService} from './services/message.service';
-// import {PostService} from './services/post.service';
+import {AuthService} from './../services/auth.service'
+import {MessageService} from './services/message.service';
+import {PostService} from './services/post.service';
 // import {SearchService} from './services/search.service';
 // import {PremiumService} from './services/premium.service';
 
-import {AuthService} from './../services/mock_auth.service'
-import {MessageService} from './services/mock_message.service';
-import {PostService} from './services/mock_post.service';
+// import {AuthService} from './../services/mock_auth.service'
+// import {MessageService} from './services/mock_message.service';
+// import {PostService} from './services/mock_post.service';
 import {SearchService} from './services/mock_search.service';
 import {PremiumService} from './services/mock_premium.service';
 

@@ -13,8 +13,8 @@ import { AppComponent }  from './app.component';
 import { NotFoundComponent }  from './not-found.component';
 import { SignInComponent } from './signIn/sign-in.component';
 
-// import {AuthService} from './services/auth.service'
-import { AuthService } from './services/mock_auth.service';
+import {AuthService} from './services/auth.service'
+// import { AuthService } from './services/mock_auth.service';
 
 
 @NgModule({

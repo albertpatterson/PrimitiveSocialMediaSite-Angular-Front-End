@@ -22,7 +22,7 @@ function makeMockUserData(username: string, following: string[], followedBy: str
         name: username,
         age: 0,
         location: username+"_location",
-        business: username+"business",
+        business: username+"_business",
         picture: imageIng(),
         followedBy,
         following,

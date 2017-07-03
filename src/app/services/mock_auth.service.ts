@@ -23,9 +23,9 @@ export class AuthService{
         return new Promise(function(res:Function, rej:Function){
             if(mockUserData[username] && (mockUserData[username].password === password)){
                 this._session = username;
-                res(true);
+                res();
             }else{
-                res(false);
+                rej("Invalid username or password.");
             }
         }.bind(this));
     }
@@ -49,6 +49,8 @@ export class AuthService{
 
     assertLoggedIn(username: string): Promise<boolean>{
         return new Promise(function(res:Function, rej:Function){
+            console.log('session', this._session);
+
             if(username === this._session){
                 res()
             }else{

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-// import {MessageService} from './../services/message.service';
-import {MessageService} from './../services/mock_message.service';
+import {MessageService} from './../services/message.service';
+// import {MessageService} from './../services/mock_message.service';
 
 import {Post} from './../Post';
 

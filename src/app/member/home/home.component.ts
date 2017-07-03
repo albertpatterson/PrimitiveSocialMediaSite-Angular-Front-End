@@ -4,13 +4,11 @@ import {Router, ActivatedRoute,Params} from '@angular/router';
 
 // import {MemberComponent} from '../member.component';
 
-// import {PostService} from './../services/post.service';
-import {PostService} from './../services/mock_post.service';
+import {PostService} from './../services/post.service';
+// import {PostService} from './../services/mock_post.service';
 
 import {Post} from './../Post';
 
-
-import {mockUserData} from '../../mockData/mockUserData';
 
 @Component({
     selector: 'member-home',
@@ -31,17 +29,17 @@ export class HomeComponent implements OnInit{
         private postService: PostService) {}
 
     ngOnInit(): void {
-        console.log(mockUserData);
         this._updateFollowedPosts();
-        console.log(mockUserData);
         console.log('home', this.username)
     }
 
     addPost(postContent: string): void{
-        alert(postContent)
-        this.postService.putPublicPost(this.username, postContent)
+        
+
+        this.postService.addPost(this.username, postContent)
         .then(function(){
-            return this._updateFollowedPosts()
+            console.log('add post comp', this.username, postContent);
+            return this._updateFollowedPosts();
         }.bind(this))
     }
 

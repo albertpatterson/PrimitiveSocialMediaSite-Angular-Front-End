@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter } from '@angular/core';
 
 // import {SearchService} from './../services/search.service';
 import {SearchService} from './../services/mock_search.service';
@@ -19,7 +19,7 @@ import { User } from './../User';
                     './search.component.css'
                 ]    
 })
-export class SearchComponent implements OnInit{
+export class SearchComponent implements OnInit, OnChanges{
 
     public username: string;
     public searchPattern: string;
@@ -41,6 +41,15 @@ export class SearchComponent implements OnInit{
         // .switchMap(function(params: Params){
         //     return this.searchService.search(params["pattern"]);     
         // }.bind(this))
+        // console.log('searchpattern', this.searchPattern);
+        // this.searchService.search(this.searchPattern) 
+        // .then(function(users: User[]){
+        //     this.userGroups = this._toGrid(users,3);
+        // }.bind(this))   
+    }
+
+    ngOnChanges(): void {
+        console.log('searchpattern', this.searchPattern);
         this.searchService.search(this.searchPattern) 
         .then(function(users: User[]){
             this.userGroups = this._toGrid(users,3);
