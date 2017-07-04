@@ -57,8 +57,8 @@ export class MemberComponent implements OnInit{
 
   visitUser(othersName: string){
     console.log('visit other!', othersName)
-    this.view = "other";
     this.othersName = othersName;
+    this.view = "other";
   }
 
   signout(): void{

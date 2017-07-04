@@ -1,7 +1,7 @@
 import { Component, OnInit, OnChanges, EventEmitter } from '@angular/core';
 
-// import {SearchService} from './../services/search.service';
-import {SearchService} from './../services/mock_search.service';
+import {PersonalDataService} from './../services/personal-data.service';
+// import {SearchService} from './../services/mock_search.service';
 
 import { ActivatedRoute, Params }     from '@angular/router';
 
@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit, OnChanges{
 
     userGroups: User[][];
 
-    constructor(private searchService: SearchService,
+    constructor(private personalDataService: PersonalDataService,
                 private route: ActivatedRoute){ }
 
     ngOnInit(): void {
@@ -50,7 +50,7 @@ export class SearchComponent implements OnInit, OnChanges{
 
     ngOnChanges(): void {
         console.log('searchpattern', this.searchPattern);
-        this.searchService.search(this.searchPattern) 
+        this.personalDataService.searchUserData(this.username, this.searchPattern) 
         .then(function(users: User[]){
             this.userGroups = this._toGrid(users,3);
         }.bind(this))   

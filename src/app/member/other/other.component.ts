@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 // import { SearchService } from '../services/search.service';
-import { SearchService } from '../services/mock_search.service';
-
+// import { SearchService } from '../services/mock_search.service';
+import {PersonalDataService} from './../services/personal-data.service';
 
 import { PostService } from '../services/post.service';
 // import {PostService} from './../services/mock_post.service';
@@ -32,7 +32,7 @@ export class OtherComponent implements OnInit{
     ownPosts: Post[];     
 
     constructor(
-        private searchService: SearchService,
+        private personalDataService: PersonalDataService,
         private postService: PostService,
         private messageService: MessageService,
         private subscriptionService: SubscriptionService){}
@@ -44,18 +44,13 @@ export class OtherComponent implements OnInit{
     //     }.bind(this))
 
         console.log('otherName', this.othersName)
-        this.searchService.search(`^${this.othersName}$`)
-        .then(function(users: User[]){
-            if(users.length===1){
-                this.user = users[0];
+        this.personalDataService.getUserData(this.username, this.othersName)
+        .then(function(user: User){
+                this.user = user;
                 this.postService.getOwnPosts(this.username, this.user.name)
                 .then(function(ownPosts: Post[]){
                     this.ownPosts = ownPosts;
                 }.bind(this))
-            }else{
-                //handle error
-                console.log('multiple matches')
-            }
         }.bind(this))   
     }
 
