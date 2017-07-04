@@ -1,5 +1,4 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { SignUpService } from './../../services/sign-up.service';
 
@@ -37,8 +36,7 @@ export class SignUpComponent implements OnInit{
     pictureDiagnostic: string = "Your photo";
     
     constructor(
-        private signUpService: SignUpService,
-        private router: Router){
+        private signUpService: SignUpService){
     }
     
     ngOnInit():void{
@@ -46,7 +44,14 @@ export class SignUpComponent implements OnInit{
     }
 
     signUp(){
-        // this.signedUpEvent.next(this.username)
+        console.log('call sign up service')
+        this.signUpService.signUp(this.username, this.location, this.DOB, this.business, this.picture, this.password)
+        .then(()=>{console.log('response from sign up request ' + this.username); this.signedUpEvent.next(this.username)})
+        .catch((err)=>console.log(err))
+    }
+
+    addPicture(event: any):void {
+        this.picture = event.target.files[0];
     }
 
     private _handleSignUpError(error: any){
