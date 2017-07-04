@@ -11,6 +11,8 @@ import {OtherComponent} from './other/other.component';
 import {SearchComponent} from './search/search.component';
 import {PremiumComponent} from './premium/premium.component';
 import {MessageFormComponent} from './utils/messageForm/message-form.component';
+import {PostComponent} from './utils/post/post.component';
+
 
 
 import {AuthService} from './../services/auth.service'
@@ -38,7 +40,8 @@ import {SubscriptionService} from './services/subscription.service';
                     OtherComponent,
                     SearchComponent,
                     PremiumComponent,
-                    MessageFormComponent],
+                    MessageFormComponent, 
+                    PostComponent],
 
     providers: [    AuthService,
                     MessageService, 
