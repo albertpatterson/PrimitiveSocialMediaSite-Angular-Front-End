@@ -18,12 +18,17 @@ export class PersonalDataService{
     ){}
 
     getUserData(username: string, desiredUserName: string): Promise<User> {
-        let resolverFactory = (res: Function)=>(resp: Response)=>res(resp.json());
+        let resolverFactory = (res: Function)=>(resp: Response)=>res(this._setAge(resp.json()));
         return this._getUserData(username, "desiredUserName", desiredUserName, resolverFactory);
     }
 
+    private _setAge(user: any): User{
+        user.age = Math.floor((Date.now()-Date.parse(user.DOB))/1000/60/60/24/365);
+        return user;
+    }
+
     searchUserData(username: string, desiredUserQuery: string): Promise<User[]> {
-        let resolverFactory = (res: Function)=>(resp: Response)=>res(resp.json().data);
+        let resolverFactory = (res: Function)=>(resp: Response)=>res(resp.json().data.map((user:any)=>this._setAge(user)));
         return this._getUserData(username, "desiredUserQuery", desiredUserQuery, resolverFactory);
     }
 
