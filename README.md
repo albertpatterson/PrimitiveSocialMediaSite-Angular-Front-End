@@ -4,19 +4,19 @@ This is a front end for the Primative Social Media Site project. This version of
   - [x] sign in page 
   - [x] member area
   - [x] member pages (children of member area)
+    - [x] home
+    - [x] other user
+    - [x] search users
+    - [x] messages
+    - [x] premium content
 - [x] routing
   - [x] sign in page 
   - [x] member area
-  - [x] member pages (children of member area)
 - [ ] services 
-  - [ ] authenticate user
-    - [x] mock provided
-  - [ ] send and retrieve posts and messages
-    - [x] mock provided  
-  - [ ] searching for other users
-    - [x] mock provided  
-  - [ ] managing premium content added to the site
-    - [x] mock provided  
+  - [x] authenticate user
+  - [x] send and retrieve posts and messages
+  - [x] searching for other users
+  - [x] managing premium content added to the site
 
 ## Instalation
 Clone this repository, then run<br>
