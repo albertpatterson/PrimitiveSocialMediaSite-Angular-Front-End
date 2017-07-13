@@ -12,7 +12,7 @@ This is a front end for the Primative Social Media Site project. This version of
 - [x] routing
   - [x] sign in page 
   - [x] member area
-- [ ] services 
+- [x] services 
   - [x] authenticate user
   - [x] send and retrieve posts and messages
   - [x] searching for other users
@@ -33,7 +33,7 @@ password: any character string between 1 and 10 characters in length
 Currently, there is no back end provided, but in the future both a servlets API and a nodejs API will be available.
 
 ## TODO
-* update services to communicate with backend
-* consider style improvements
-* add tests
+- [ ] consider style improvements
+- [ ] add tests
+- [ ] cosider adding chat feature using sockets
 
