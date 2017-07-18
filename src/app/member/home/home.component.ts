@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 
 import {Router, ActivatedRoute,Params} from '@angular/router';
 
@@ -13,6 +13,7 @@ import {Post} from './../Post';
 @Component({
     selector: 'member-home',
     inputs: ['username'],
+    outputs: ['userSelect'],
     templateUrl: './home.component.html',
     styleUrls: ['./../member.component.css', './home.component.css'],
 })
@@ -24,6 +25,8 @@ export class HomeComponent implements OnInit{
     messageCount: number;
 
     postFormVisible: boolean = true;
+
+    public userSelect: EventEmitter<string> = new EventEmitter();
 
     constructor(
         private postService: PostService) {}
@@ -49,5 +52,9 @@ export class HomeComponent implements OnInit{
                     console.log('update', followedPosts);
                     this.followedPosts=followedPosts;
                 }.bind(this));
+    }
+
+    selectUser(otherUsername: string){
+        this.userSelect.next(otherUsername);
     }    
 }

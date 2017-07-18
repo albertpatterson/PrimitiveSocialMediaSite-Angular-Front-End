@@ -19,14 +19,14 @@ import { Post } from '../Post';
 
 @Component({
     selector: 'member-other',
-    inputs: ['username', 'othersName'],
+    inputs: ['username', 'profileUsername'],
     templateUrl: './other.component.html',
     styleUrls: ['./../member.component.css', './other.component.css']
 })
 export class OtherComponent implements OnInit{
 
     public username: string;
-    public othersName: string;
+    public profileUsername: string;
     
     user: User;   
     ownPosts: Post[];     
@@ -43,8 +43,8 @@ export class OtherComponent implements OnInit{
     //         return this.searchService.search(`^${params["othersName"]}$`);     
     //     }.bind(this))
 
-        console.log('otherName', this.othersName)
-        this.personalDataService.getUserData(this.username, this.othersName)
+        console.log('otherName', this.profileUsername)
+        this.personalDataService.getUserData(this.username, this.profileUsername)
         .then(function(user: User){
                 this.user = user;
                 this.postService.getOwnPosts(this.username, this.user.name)
@@ -56,7 +56,7 @@ export class OtherComponent implements OnInit{
 
     sendMessage(message: string): void {
         alert(message);
-        this.messageService.addMessage(this.username, message, this.othersName)
+        this.messageService.addMessage(this.username, message, this.profileUsername)
         .then(()=>alert("Message Sent!"))
     }
 

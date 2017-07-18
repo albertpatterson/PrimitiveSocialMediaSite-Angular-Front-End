@@ -13,12 +13,22 @@ import {MessageService} from './services/message.service';
 })
 export class MemberComponent implements OnInit{ 
     
+  // the current user's username
   username: string;
+  // the number of messages available
   messageCount: number;
-  searchPattern: string = '';
-  othersName: string;
-
+  // current view 
   view: string = "home";
+  
+  // data required by the search component
+  searchComponentData = {
+                          searchPattern: ''
+                        };
+
+  // data required by the other user component
+  profileComponentData = {
+                              profileUsername: ''
+                            };
 
   constructor(
       private authService: AuthService,
@@ -45,7 +55,7 @@ export class MemberComponent implements OnInit{
 
   search(searchPattern: string): void {
     console.log('search searchPattern', searchPattern)
-    this.searchPattern = searchPattern;
+    this.searchComponentData.searchPattern = searchPattern;
     this.go('search');
   }
 
@@ -55,10 +65,10 @@ export class MemberComponent implements OnInit{
     }
   }
 
-  visitUser(othersName: string){
-    console.log('visit other!', othersName)
-    this.othersName = othersName;
-    this.view = "other";
+  visitUser(profileUsername: string){
+    console.log('visit other!', profileUsername)
+    this.profileComponentData.profileUsername = profileUsername;
+    this.go("other");
   }
 
   signout(): void{
