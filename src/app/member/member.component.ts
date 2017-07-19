@@ -7,6 +7,14 @@ import {MessageService} from './services/message.service';
 // import {MessageService} from './services/mock_message.service';
 
 
+/**
+ * Component implementing the member area, including the following 
+ * pages: home, messages, search, premium, profile
+ * 
+ * @export
+ * @class MemberComponent
+ * @implements {OnInit}
+ */
 @Component({
   templateUrl: './member.component.html',
   styleUrls: ['./member.component.css']  
@@ -17,8 +25,8 @@ export class MemberComponent implements OnInit{
   username: string;
   // the number of messages available
   messageCount: number;
-  // current view 
-  view: string = "home";
+  // currently displayed page 
+  currentPage: string = "home";
   
   // data required by the search component
   searchComponentData = {
@@ -34,8 +42,15 @@ export class MemberComponent implements OnInit{
       private authService: AuthService,
       private router: Router,
       private messageService: MessageService,
-      private activatedRoute: ActivatedRoute) {}
+      private activatedRoute: ActivatedRoute
+      ) {}
 
+  /**
+   * update the count of the number of messages available
+   * 
+   * @returns {Promise<any>} 
+   * @memberof MemberComponent
+   */
   _setMessageCount(): Promise<any>{
     console.log('get message count');
     return  this.messageService.getMessageCount(this.username)
@@ -45,32 +60,50 @@ export class MemberComponent implements OnInit{
             }.bind(this));
   }
 
-  go(view: string): void{
+  /**
+   * go to a particlar view/page in the member area
+   * 
+   * @param {string} page - the page in the member area to display 
+   * @memberof MemberComponent
+   */
+  go(page: string): void{
     this.authService.assertLoggedIn(this.username)
       .then(this._setMessageCount.bind(this))
       .catch((e:Error) => console.log(e));
 
-    this.view = view;
+    this.currentPage = page;
   }
 
+  /**
+   * perform a search for other users
+   * 
+   * @param {string} searchPattern - the search pattern to match
+   * @memberof MemberComponent
+   */
   search(searchPattern: string): void {
     console.log('search searchPattern', searchPattern)
     this.searchComponentData.searchPattern = searchPattern;
     this.go('search');
   }
 
-  searchOnEnter(event: any): void{
-    if(event.key==="Enter"){
-      this.search(event.target.value);
-    }
-  }
-
-  visitUser(profileUsername: string){
+  /**
+   * go to a users profile
+   * 
+   * @param {string} profileUsername - the username of the user whose profile
+   *    should be shown
+   * @memberof MemberComponent
+   */
+  goProfile(profileUsername: string){
     console.log('visit other!', profileUsername)
     this.profileComponentData.profileUsername = profileUsername;
     this.go("other");
   }
 
+  /**
+   * sign out of the member area
+   * 
+   * @memberof MemberComponent
+   */
   signout(): void{
     this.authService.signout(this.username)
     .then(function(signedOut: Promise<any>){
@@ -78,6 +111,12 @@ export class MemberComponent implements OnInit{
     }.bind(this))
   }
 
+  /**
+   * set the username, assert the user is logged in and then set
+   * the message count on init
+   * 
+   * @memberof MemberComponent
+   */
   ngOnInit(): void{
 
       this.activatedRoute.params 

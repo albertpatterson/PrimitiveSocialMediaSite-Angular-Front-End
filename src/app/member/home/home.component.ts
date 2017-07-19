@@ -2,14 +2,20 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 
 import {Router, ActivatedRoute,Params} from '@angular/router';
 
-// import {MemberComponent} from '../member.component';
-
 import {PostService} from './../services/post.service';
 // import {PostService} from './../services/mock_post.service';
 
 import {Post} from './../Post';
 
 
+/**
+ * Component showing the member's home page, allowing the to 
+ * view followed posts and add new ones
+ * 
+ * @export
+ * @class HomeComponent
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'member-home',
     inputs: ['username'],
@@ -19,26 +25,48 @@ import {Post} from './../Post';
 })
 export class HomeComponent implements OnInit{
 
+    /**
+     * the name of the user
+     * 
+     * @type {string}
+     * @memberof HomeComponent
+     */
     public username: string;
 
-    followedPosts: Post[];
-    messageCount: number;
-
-    postFormVisible: boolean = true;
-
+    /**
+     * event to be emitted when a user is selected from the followed posts
+     * 
+     * @type {EventEmitter<string>}
+     * @memberof HomeComponent
+     */
     public userSelect: EventEmitter<string> = new EventEmitter();
 
-    constructor(
-        private postService: PostService) {}
+    private followedPosts: Post[];
+    private messageCount: number;
+    private postFormVisible: boolean = true;
 
+    constructor(
+        private postService: PostService
+        ) {}
+
+    /**
+     * update the list of followed posts on init
+     * 
+     * @memberof HomeComponent
+     */
     ngOnInit(): void {
         this._updateFollowedPosts();
         console.log('home', this.username)
     }
 
+    /**
+     * add a new post
+     * 
+     * @param {string} postContent 
+     * @memberof HomeComponent
+     */
     addPost(postContent: string): void{
         
-
         this.postService.addPost(this.username, postContent)
         .then(function(){
             console.log('add post comp', this.username, postContent);
@@ -46,6 +74,12 @@ export class HomeComponent implements OnInit{
         }.bind(this))
     }
 
+    /**
+     * update the list of followed posts
+     * 
+     * @returns {Promise<Post[]>} 
+     * @memberof HomeComponent
+     */
     _updateFollowedPosts(): Promise<Post[]>{
         return  this.postService.getFollowedPosts(this.username)
                 .then(function(followedPosts: Post[]){
@@ -54,6 +88,12 @@ export class HomeComponent implements OnInit{
                 }.bind(this));
     }
 
+    /**
+     * select a user from the list of posts and emit the userSelect event
+     * 
+     * @param {string} otherUsername 
+     * @memberof HomeComponent
+     */
     selectUser(otherUsername: string){
         this.userSelect.next(otherUsername);
     }    

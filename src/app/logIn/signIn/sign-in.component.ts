@@ -2,6 +2,12 @@ import { Component, EventEmitter } from '@angular/core';
 
 import { AuthService } from './../../services/auth.service';
 
+/**
+ * Component allowing users to sign into their existing account
+ * 
+ * @export
+ * @class SignInComponent
+ */
 @Component({
     selector: 'sign-in',
     outputs: ["signedInEvent"],
@@ -10,6 +16,12 @@ import { AuthService } from './../../services/auth.service';
 })
 export class SignInComponent {
     
+    /**
+     * event to be emitted when the user has signed in
+     * 
+     * @type {EventEmitter<string>}
+     * @memberof SignInComponent
+     */
     public signedInEvent: EventEmitter<string> = new EventEmitter();
     
     username: string;
@@ -28,14 +40,25 @@ export class SignInComponent {
         private authService: AuthService
         ){}
     
+    /**
+     * attempt to sign into a user's account
+     * 
+     * @memberof SignInComponent
+     */
     signIn(): void {
         console.log(" sign in "+this.username+" "+this.password)
         this.authService.tryLogin(this.username, this.password)
         .then( ()=>this.signedInEvent.next(this.username) )
-        .catch( this._handleLoginError.bind(this) );
+        .catch( this._updateUserOfLoginError.bind(this) );
     }
 
-    _handleLoginError(error: any){
+    /**
+     * update the invalid login information shown to the user and reset password
+     * 
+     * @param {*} error 
+     * @memberof SignInComponent
+     */
+    _updateUserOfLoginError(error: any){
         console.log('login err', error)
         this.invalidCredentials = true;
         this.password = '';

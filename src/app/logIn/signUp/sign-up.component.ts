@@ -2,6 +2,13 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 
 import { SignUpService } from './../../services/sign-up.service';
 
+/**
+ * Component allowing users to sign up for a new account
+ * 
+ * @export
+ * @class SignUpComponent
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'sign-up',
     outputs: ["signedUpEvent"],
@@ -10,6 +17,12 @@ import { SignUpService } from './../../services/sign-up.service';
 })
 export class SignUpComponent implements OnInit{
 
+    /**
+     * event to be emitted when a user has signed up
+     * 
+     * @type {EventEmitter<String>}
+     * @memberof SignUpComponent
+     */
     public signedUpEvent: EventEmitter<String> = new EventEmitter();
 
     username: string;
@@ -40,24 +53,51 @@ export class SignUpComponent implements OnInit{
     }
     
     ngOnInit():void{
+        // set the maximum DOB allowed in the sign up form to today's date
         this.DOBMax = this._getTodaysDate();
     }
 
+
+    /**
+     * Attempt to sign the user up for an account
+     * 
+     * @memberof SignUpComponent
+     */
     signUp(){
         console.log('call sign up service')
         this.signUpService.signUp(this.username, this.location, this.DOB, this.business, this.picture, this.password)
         .then(()=>{console.log('response from sign up request ' + this.username); this.signedUpEvent.next(this.username)})
-        .catch((err)=>console.log(err))
+        .catch((err)=>this._handleSignUpError(err))
     }
 
+    /**
+     * extract the user's photo from the form
+     * 
+     * @param {*} event 
+     * @memberof SignUpComponent
+     */
     addPicture(event: any):void {
         this.picture = event.target.files[0];
     }
 
+    /**
+     * handle an error in the sign up attempt
+     * 
+     * @private
+     * @param {*} error 
+     * @memberof SignUpComponent
+     */
     private _handleSignUpError(error: any){
-
+        console.log(error)
     }
 
+    /**
+     * get the current date
+     * 
+     * @private
+     * @returns {string} 
+     * @memberof SignUpComponent
+     */
     private _getTodaysDate(): string{
         const date = new Date();
         const year = date.getFullYear();
