@@ -4,7 +4,7 @@
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
     "mystart": "concurrently \"npm run build\" \"npm run html\" \"npm run css\" \"npm run js\" \"npm run serve\"",
-    "build": "concurrently \"tsc -p src/\" \"npm run copy:web\"",
+    "build": "concurrently \"tsc -p src/\" \"npm run copy:static\" \"npm run copy:web\"",
     "build:watch": "concurrently \"npm run build:watchOld\" \"npm run copy:static\"",
     "build:watchOld": "tsc -p src/",
     "build:watchOldOld": "tsc -p src/ -w",

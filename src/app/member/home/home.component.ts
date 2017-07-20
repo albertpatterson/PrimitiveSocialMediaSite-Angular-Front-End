@@ -45,6 +45,11 @@ export class HomeComponent implements OnInit{
     private messageCount: number;
     private postFormVisible: boolean = true;
 
+    /**
+     * Creates an instance of HomeComponent.
+     * @param {PostService} postService 
+     * @memberof HomeComponent
+     */
     constructor(
         private postService: PostService
         ) {}

@@ -6,6 +6,12 @@ import {MessageService} from './../services/message.service';
 import {Post} from './../Post';
 
 
+/**
+ * Component used to display messages
+ * 
+ * @export
+ * @class MessagesComponent
+ */
 @Component({
     selector: 'member-messages',
     inputs: ['username'],
@@ -17,13 +23,36 @@ import {Post} from './../Post';
 })
 export class MessagesComponent {
 
-    public username: string;
+    /**
+     * the user's username
+     * 
+     * @type {string}
+     * @memberof MessagesComponent
+     */
+    private username: string;
 
-    messages: Post[];
+    /**
+     * messages sent to the user
+     * 
+     * @type {Post[]}
+     * @memberof MessagesComponent
+     */
+    private messages: Post[];
 
+    /**
+     * Creates an instance of MessagesComponent.
+     * @param {MessageService} messageService 
+     * @memberof MessagesComponent
+     */
     constructor(
-        private messageService: MessageService) {}
+        private messageService: MessageService
+        ) {}
 
+    /**
+     * update the messages on init
+     * 
+     * @memberof MessagesComponent
+     */
     ngOnInit(): void{
         this.messageService.getMessages(this.username)
         .then(function(messages: Post[]){

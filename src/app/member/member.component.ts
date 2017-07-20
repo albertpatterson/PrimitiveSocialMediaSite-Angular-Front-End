@@ -77,7 +77,7 @@ export class MemberComponent implements OnInit{
   /**
    * perform a search for other users
    * 
-   * @param {string} searchPattern - the search pattern to match
+   * @param {string} searchPattern - the search pattern to match usernames
    * @memberof MemberComponent
    */
   search(searchPattern: string): void {
@@ -96,7 +96,7 @@ export class MemberComponent implements OnInit{
   goProfile(profileUsername: string){
     console.log('visit other!', profileUsername)
     this.profileComponentData.profileUsername = profileUsername;
-    this.go("other");
+    this.go("profile");
   }
 
   /**

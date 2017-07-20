@@ -76,8 +76,8 @@
                         [searchPattern]="searchComponentData.searchPattern" 
                         (userSelect)="goProfile($event)"></member-search>
         
-        <member-other   *ngSwitchCase="'other'" 
+        <member-profile *ngSwitchCase="'profile'" 
                         [username]="username" 
-                        [profileUsername]="profileComponentData.profileUsername"></member-other>
+                        [profileUsername]="profileComponentData.profileUsername"></member-profile>
     </div>
 </div>
