@@ -41,9 +41,23 @@ export class HomeComponent implements OnInit{
      */
     public userSelect: EventEmitter<string> = new EventEmitter();
 
+    /**
+     * the posted followed by the user
+     * 
+     * @private
+     * @type {Post[]}
+     * @memberof HomeComponent
+     */
     private followedPosts: Post[];
+
+    /**
+     * the number of messages available to the user
+     * 
+     * @private
+     * @type {number}
+     * @memberof HomeComponent
+     */
     private messageCount: number;
-    private postFormVisible: boolean = true;
 
     /**
      * Creates an instance of HomeComponent.

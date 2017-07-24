@@ -32,6 +32,13 @@ export class MessagesComponent {
      */
     private username: string;
 
+    /**
+     * event emitted when a user is selected from the messages component
+     * 
+     * @private
+     * @type {EventEmitter<string>}
+     * @memberof MessagesComponent
+     */
     private userSelect: EventEmitter<string> = new EventEmitter();
 
     /**

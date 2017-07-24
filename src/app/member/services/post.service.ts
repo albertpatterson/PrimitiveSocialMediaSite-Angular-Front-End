@@ -7,23 +7,66 @@ import {assertStatus, handleError} from '../../utils/handleResponse';
 
 import 'rxjs/add/operator/toPromise';
 
+/**
+ * Service providing a user access to posts
+ * 
+ * @export
+ * @class PostService
+ */
 @Injectable()
 export class PostService{
 
+    /**
+     * url of the post resource
+     * 
+     * @private
+     * @type {string}
+     * @memberof PostService
+     */
     private _postUrl: string = "/post";
 
+    /**
+     * Creates an instance of PostService.
+     * @param {Http} http 
+     * @memberof PostService
+     */
     constructor(
         private http: Http
     ){}
 
+    /**
+     * get the posts followed by a user
+     * 
+     * @param {string} username 
+     * @returns {Promise<Post[]>} 
+     * @memberof PostService
+     */
     getFollowedPosts(username: string): Promise<Post[]> {
         return this._getPosts(username, username, "followed");
     }
 
+    /**
+     * get the posts created by a user
+     * 
+     * @param {string} username 
+     * @param {string} poster 
+     * @returns {Promise<Post[]>} 
+     * @memberof PostService
+     */
     getOwnPosts(username: string, poster: string): Promise<Post[]>{
         return this._getPosts(username, poster, "own");
     }
 
+    /**
+     * get various types of posts
+     * 
+     * @private
+     * @param {string} username 
+     * @param {string} poster 
+     * @param {string} type - the type of posts ("followed" or "own")
+     * @returns {Promise<Post[]>} 
+     * @memberof PostService
+     */
     private _getPosts(username: string, poster: string, type: string): Promise<Post[]>{
 
         return new Promise((res: Function, rej: Function)=>{
@@ -41,8 +84,14 @@ export class PostService{
         });
     }
 
-    // }
-
+    /**
+     * add a new post
+     * 
+     * @param {string} username 
+     * @param {string} content 
+     * @returns {Promise<{}>} 
+     * @memberof PostService
+     */
     addPost(username: string, content: string): Promise<{}>{
 
         console.log('add post', username, content)
@@ -59,6 +108,14 @@ export class PostService{
                 });    
     }
 
+    /**
+     * delete a post
+     * 
+     * @param {string} username 
+     * @param {number} idx - index of the post to delete
+     * @returns {Promise<{}>} 
+     * @memberof PostService
+     */
     deletePost(username: string, idx: number): Promise<{}>{
         return new Promise((res: Function, rej: Function)=>{
             let data = new URLSearchParams();

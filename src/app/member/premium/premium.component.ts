@@ -6,6 +6,13 @@ import {PremiumService} from './../services/premium.service';
 import {PremiumContent} from '../PremiumContent';
 
 
+/**
+ * Component providing viewing and purchase of premium content
+ * 
+ * @export
+ * @class PremiumComponent
+ * @implements {OnInit}
+ */
 @Component({
     selector: "member-premium",
     inputs: ['username'],
@@ -14,12 +21,38 @@ import {PremiumContent} from '../PremiumContent';
 })
 export class PremiumComponent implements OnInit{
 
-    public username: string;
+    /**
+     * the name of the current user
+     * 
+     * @private
+     * @type {string}
+     * @memberof PremiumComponent
+     */
+    private username: string;
 
-    premiumGroups: string[][];
+    /**
+     * groups of premium content for grid layout
+     * 
+     * @private
+     * @type {string[][]}
+     * @memberof PremiumComponent
+     */
+    private premiumGroups: string[][];
 
-    constructor(private premiumService: PremiumService){}
+    /**
+     * Creates an instance of PremiumComponent.
+     * @param {PremiumService} premiumService 
+     * @memberof PremiumComponent
+     */
+    constructor(
+        private premiumService: PremiumService
+    ){}
 
+    /**
+     * get the user's premium content and populate the grid on init
+     * 
+     * @memberof PremiumComponent
+     */
     ngOnInit(): void{
 
         this.premiumService.getPremium(this.username)
@@ -29,10 +62,23 @@ export class PremiumComponent implements OnInit{
         }.bind(this))
     }
 
+    /**
+     * submit for to purchase premium content. todo: wire up form
+     * 
+     * @memberof PremiumComponent
+     */
     onSubmit():void{
         console.log('submitted!');
     }
 
+    /**
+     * create a grid
+     * 
+     * @param {any[]} items 
+     * @param {number} nCols 
+     * @returns 
+     * @memberof PremiumComponent
+     */
     _toGrid(items: any[], nCols: number){
         let grid = [];
         const max=nCols*Math.ceil(items.length/nCols);

@@ -6,15 +6,39 @@ import {assertStatus, handleError} from '../../utils/handleResponse';
 
 import 'rxjs/add/operator/toPromise';
 
+/**
+ * Service providing access to premium content
+ * 
+ * @export
+ * @class PremiumService
+ */
 @Injectable()
 export class PremiumService {
     
+    /**
+     * url of the premium resource
+     * 
+     * @private
+     * @memberof PremiumService
+     */
     private _premiumUrl = "/premium";
     
+    /**
+     * Creates an instance of PremiumService.
+     * @param {Http} http 
+     * @memberof PremiumService
+     */
     constructor(
         private http: Http
     ){}
 
+    /**
+     * get the premium items purchased by a user
+     * 
+     * @param {string} username 
+     * @returns {Promise<string>} 
+     * @memberof PremiumService
+     */
     getPremium(username: string): Promise<string>{
         return new Promise((res: Function, rej: Function)=>{
             let data = new URLSearchParams();
@@ -29,6 +53,14 @@ export class PremiumService {
         });
     }
 
+    /**
+     * purchase a new premium item
+     * 
+     * @param {string} username 
+     * @param {string} content 
+     * @returns {Promise<{}>} 
+     * @memberof PremiumService
+     */
     addPremium(username: string, content: string): Promise<{}>{
         return new Promise((res:Function, rej: Function)=>{
             let data = new URLSearchParams();
@@ -44,6 +76,14 @@ export class PremiumService {
         });
     }
 
+    /**
+     * delete a premium item
+     * 
+     * @param {string} username 
+     * @param {number} index - index of the item to remove 
+     * @returns {Promise<{}>} 
+     * @memberof PremiumService
+     */
     deletePremium(username: string, index: number): Promise<{}>{
         return new Promise((res:Function, rej: Function)=>{
             let data = new URLSearchParams();
