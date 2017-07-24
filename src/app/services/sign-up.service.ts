@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 import {assertStatus, handleError} from '../utils/handleResponse'
 
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class SignUpService{
@@ -12,7 +13,8 @@ export class SignUpService{
     private _signUpUrl = '/signUp';
 
     constructor(
-        private http: Http
+        private http: Http,
+        private authService: AuthService
     ){}
 
     signUp(username: string, location: string, DOB: string, business: string, picture: any, password: string): Promise<{}>{
@@ -30,6 +32,7 @@ export class SignUpService{
             this.http.post(this._signUpUrl, formData)
             .toPromise()
             .then((resp:Response)=>assertStatus(res, resp, 201, "Could not create user."))
+            .then(()=>this.authService.tryLogin(username, password))
             .catch((err:any)=>handleError(rej, err));
         });
     }

@@ -63,6 +63,13 @@ export class MessagesComponent {
         }.bind(this));
     }
 
+    /**
+     * select a user
+     * 
+     * @private
+     * @param {string} selectedUserName - the username of the user to select
+     * @memberof MessagesComponent
+     */
     private selectUser(selectedUserName: string){
         this.userSelect.next(selectedUserName);
     }
