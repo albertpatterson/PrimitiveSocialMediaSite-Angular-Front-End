@@ -99,7 +99,7 @@ export class HomeComponent implements OnInit{
      * @param {string} otherUsername 
      * @memberof HomeComponent
      */
-    selectUser(otherUsername: string){
-        this.userSelect.next(otherUsername);
+    selectUser(selectedUserName: string){
+        this.userSelect.next(selectedUserName);
     }    
 }

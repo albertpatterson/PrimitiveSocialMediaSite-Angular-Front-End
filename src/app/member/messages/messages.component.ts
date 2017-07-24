@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 import {MessageService} from './../services/message.service';
 // import {MessageService} from './../services/mock_message.service';
@@ -15,6 +15,7 @@ import {Post} from './../Post';
 @Component({
     selector: 'member-messages',
     inputs: ['username'],
+    outputs: ['userSelect'],
     templateUrl: './messages.component.html',
     styleUrls: [
                     './../member.component.css',
@@ -30,6 +31,8 @@ export class MessagesComponent {
      * @memberof MessagesComponent
      */
     private username: string;
+
+    private userSelect: EventEmitter<string> = new EventEmitter();
 
     /**
      * messages sent to the user
@@ -58,5 +61,9 @@ export class MessagesComponent {
         .then(function(messages: Post[]){
             this.messages=messages;
         }.bind(this));
+    }
+
+    private selectUser(selectedUserName: string){
+        this.userSelect.next(selectedUserName);
     }
 }
