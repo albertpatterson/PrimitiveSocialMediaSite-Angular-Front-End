@@ -17,7 +17,6 @@ import { User } from './../User';
     outputs: ['userSelect'],
     templateUrl: './search.component.html',
     styleUrls: [
-                    './../member.component.css',
                     './search.component.css'
                 ]    
 })

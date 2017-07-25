@@ -18,7 +18,6 @@ import {Post} from './../Post';
     outputs: ['userSelect'],
     templateUrl: './messages.component.html',
     styleUrls: [
-                    './../member.component.css',
                     './messages.component.css'
                 ]
 })

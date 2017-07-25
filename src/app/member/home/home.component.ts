@@ -21,7 +21,7 @@ import {Post} from './../Post';
     inputs: ['username'],
     outputs: ['userSelect'],
     templateUrl: './home.component.html',
-    styleUrls: ['./../member.component.css', './home.component.css'],
+    styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit{
 

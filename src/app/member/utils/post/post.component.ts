@@ -5,7 +5,7 @@ import {Component, EventEmitter} from '@angular/core';
     inputs: ["poster", "timestamp", "content"],
     outputs: ["userSelect"],
     templateUrl: "./post.component.html",
-    styleUrls: ['./../../member.component.css',"./post.component.css"]
+    styleUrls: ["./post.component.css"]
 })
 export class PostComponent{
     public poster: string;

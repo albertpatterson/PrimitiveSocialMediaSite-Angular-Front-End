@@ -21,7 +21,7 @@ import { Post } from '../Post';
     selector: 'member-profile',
     inputs: ['username', 'profileUsername'],
     templateUrl: './profile.component.html',
-    styleUrls: ['./../member.component.css', './profile.component.css']
+    styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
 

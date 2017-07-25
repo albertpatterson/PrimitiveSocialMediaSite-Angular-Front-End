@@ -17,7 +17,7 @@ import {PremiumContent} from '../PremiumContent';
     selector: "member-premium",
     inputs: ['username'],
     templateUrl: './premium.component.html',
-    styleUrls: ['./../member.component.css', './premium.component.css']
+    styleUrls: ['./premium.component.css']
 })
 export class PremiumComponent implements OnInit{
 

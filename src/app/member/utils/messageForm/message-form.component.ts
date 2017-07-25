@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 @Component({
     selector: 'message-form',
     templateUrl: "./message-form.component.html",
-    styleUrls: ['./../../member.component.css', './message-form.component.css']
+    styleUrls: ['./message-form.component.css']
 })
 export class MessageFormComponent {
 
