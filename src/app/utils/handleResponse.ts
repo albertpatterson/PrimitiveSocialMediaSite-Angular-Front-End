@@ -10,7 +10,7 @@
         // In a real world app, you might use a remote logging infrastructure
         let errMsg: string;
         if (error instanceof Response && error.text()) {
-            errMsg = error.json().message;
+            errMsg = error.text();
         } else {
             errMsg = error.message ? error.message : error.toString();
         }

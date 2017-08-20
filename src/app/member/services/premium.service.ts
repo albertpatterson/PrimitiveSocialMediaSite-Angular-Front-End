@@ -61,15 +61,16 @@ export class PremiumService {
      * @returns {Promise<{}>} 
      * @memberof PremiumService
      */
-    addPremium(username: string, content: string): Promise<{}>{
+    addPremium(username: string, content: any): Promise<{}>{
         return new Promise((res:Function, rej: Function)=>{
-            let data = new URLSearchParams();
-            data.append("username", username);
-            data.append("item", content);
+
+            let formData: FormData = new FormData();
+            formData.append('username',username);
+            formData.append("content", content, content.name);
 
             let resolver = ()=>res();
 
-            this.http.post(this._premiumUrl, data)
+            this.http.post(this._premiumUrl, formData)
             .toPromise()
             .then((resp: Response)=>assertStatus(resolver, resp, 201, "Unable to add premium item"))
             .catch((err: any)=>handleError(rej, err))

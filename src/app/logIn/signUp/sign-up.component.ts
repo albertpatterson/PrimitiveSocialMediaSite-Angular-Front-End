@@ -89,6 +89,7 @@ export class SignUpComponent implements OnInit{
      */
     private _handleSignUpError(error: any){
         console.log(error)
+        alert(error);
     }
 
     /**

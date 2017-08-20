@@ -31,6 +31,15 @@ export class PremiumComponent implements OnInit{
     private username: string;
 
     /**
+     * new premium content to be added
+     * 
+     * @private
+     * @type {*}
+     * @memberof PremiumComponent
+     */
+    private newContent: any;
+
+    /**
      * groups of premium content for grid layout
      * 
      * @private
@@ -63,12 +72,21 @@ export class PremiumComponent implements OnInit{
     }
 
     /**
-     * submit for to purchase premium content. todo: wire up form
+     * submit new premium content
      * 
      * @memberof PremiumComponent
      */
     onSubmit():void{
-        console.log('submitted!');
+        this.premiumService.addPremium(this.username, this.newContent)
+        .then(()=>this.premiumService.getPremium(this.username))
+        .then(function(premiumItems: PremiumContent[]){
+            let premiumStrings = premiumItems.map((item: PremiumContent)=>item.content);
+            this.premiumGroups = this._toGrid(premiumStrings,3);
+        }.bind(this));
+    }
+
+    selectContent(event: any):void {
+        this.newContent = event.target.files[0];
     }
 
     /**
