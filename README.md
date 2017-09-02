@@ -11,26 +11,21 @@ This is a front end for the Primative Social Media Site project. This version of
     - [x] premium content
 - [x] routing
   - [x] sign in page 
-  - [x] member area
 - [x] services 
   - [x] authenticate user
   - [x] send and retrieve posts and messages
   - [x] searching for other users
   - [x] managing premium content added to the site
 
+## Usage
+This repository contains just the source code for the front end and is thus not ready for deployment. The transpiled code of this front end as well as compatible backends, ready for deployment, are available in different repositories: [MongoDB/Node.js/EXpress.js backend](https://github.com/albertpatterson/PrimitiveSocialMediaSite-API-Mongo-Node-Express) and [Java/Servlets/MongoDB backend](https://github.com/albertpatterson/PrimitiveSocialMediaSite-API-Mongo-Servlet). 
+
 ## Instalation
 Clone this repository, then run<br>
 $> npm install
 
-## Usage
-start the server by running<br>
-$> npm start
-
-This will open the sign in page. Currently the required login credentials are:<br>
-username: "member"<br>
-password: any character string between 1 and 10 characters in length
-
-Currently, there is no back end provided, but in the future both a servlets API and a nodejs API will be available.
+Build the files using <br>
+$> npm run build
 
 ## TODO
 - [ ] consider style improvements
