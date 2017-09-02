@@ -28,7 +28,7 @@ Build the files using <br>
 $> npm run build
 
 ## TODO
-- [ ] consider style improvements
+- [ ] consider style improvements and animations
 - [ ] add tests
 - [ ] cosider adding chat feature using sockets
 
