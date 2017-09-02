@@ -32,3 +32,25 @@ $> npm run build
 - [ ] add tests
 - [ ] cosider adding chat feature using sockets
 
+## Current Features
+### Sign In Page
+Features:
+1) Current user sign in
+2) New user sign up
+<screenshot placeholder>
+  
+### Members Area
+Features:
+1) Navigation - allows the user to navigate the different views offered to members
+2) User Search - allows the user to search for other users
+Views:
+1) Home - shows a collection of posts created by users that the current user is following
+<screenshot placeholder>
+2) Profile - shows the picture and personal details of a user as well as that user's posts
+<screenshot placeholder>
+3) Messages - shows the messages sent to the current user by other users
+<screenshot placeholder>
+4) Premium Content - shows the premium content purchased by the current user
+<screenshot placeholder>
+
+
