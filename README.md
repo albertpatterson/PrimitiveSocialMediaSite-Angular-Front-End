@@ -1,28 +1,56 @@
-# SocialMediaSite
+# Primitive Social Media Site (Angular Front End)
+This is a front end for the Primative Social Media Site project. This version of the front end is writting using Angular to provide the following features
+- [x] components
+  - [x] sign in page 
+  - [x] member area
+  - [x] member pages (children of member area)
+    - [x] home
+    - [x] other user
+    - [x] search users
+    - [x] messages
+    - [x] premium content
+- [x] routing
+  - [x] sign in page 
+- [x] services 
+  - [x] authenticate user
+  - [x] send and retrieve posts and messages
+  - [x] searching for other users
+  - [x] managing premium content added to the site
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
+## Usage
+This repository contains just the source code for the front end and is thus not ready for deployment. The transpiled code of this front end as well as compatible backends, ready for deployment, are available in different repositories: [MongoDB/Node.js/EXpress.js backend](https://github.com/albertpatterson/PrimitiveSocialMediaSite-API-Mongo-Node-Express) and [Java/Servlets/MongoDB backend](https://github.com/albertpatterson/PrimitiveSocialMediaSite-API-Mongo-Servlet). 
 
-## Development server
+## Instalation
+Clone this repository, then run<br>
+$> npm install
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Build the files using <br>
+$> npm run build
 
-## Code scaffolding
+## TODO
+- [ ] consider style improvements and animations
+- [ ] add tests
+- [ ] cosider adding chat feature using sockets
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Current Features
+### Sign In Page
+Features:
+1) Current user sign in
+2) New user sign up
+<br>*screenshot placeholder*
 
-## Build
+### Members Area
+Features:
+1) Navigation - allows the user to navigate the different views offered to members
+2) User Search - allows the user to search for other users
+Views:
+1) Home - shows a collection of posts created by users that the current user is following
+<br>*screenshot placeholder*
+2) Profile - shows the picture and personal details of a user as well as that user's posts
+<br>*screenshot placeholder*
+3) Messages - shows the messages sent to the current user by other users
+<br>*screenshot placeholder*
+4) Premium Content - shows the premium content purchased by the current user
+<br>*screenshot placeholder*
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
