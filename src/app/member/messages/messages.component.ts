@@ -29,16 +29,16 @@ export class MessagesComponent {
      * @type {string}
      * @memberof MessagesComponent
      */
-    private username: string;
+    public username: string;
 
     /**
      * event emitted when a user is selected from the messages component
      * 
-     * @private
+     * @public
      * @type {EventEmitter<string>}
      * @memberof MessagesComponent
      */
-    private userSelect: EventEmitter<string> = new EventEmitter();
+    public userSelect: EventEmitter<string> = new EventEmitter();
 
     /**
      * messages sent to the user
@@ -46,7 +46,7 @@ export class MessagesComponent {
      * @type {Post[]}
      * @memberof MessagesComponent
      */
-    private messages: Post[];
+    public messages: Post[];
 
     /**
      * Creates an instance of MessagesComponent.
@@ -72,11 +72,11 @@ export class MessagesComponent {
     /**
      * select a user
      * 
-     * @private
+     * @public
      * @param {string} selectedUserName - the username of the user to select
      * @memberof MessagesComponent
      */
-    private selectUser(selectedUserName: string){
+    public selectUser(selectedUserName: string){
         this.userSelect.next(selectedUserName);
     }
 }

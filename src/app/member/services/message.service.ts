@@ -23,7 +23,7 @@ export class MessageService{
      * @type {string}
      * @memberof MessageService
      */
-    private _messageUrl: string = "/message";
+    private _messageUrl: string = "api/message";
 
     /**
      * Creates an instance of MessageService.

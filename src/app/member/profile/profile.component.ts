@@ -28,39 +28,39 @@ export class ProfileComponent implements OnInit{
     /**
      * the username of the currently signed in user
      * 
-     * @private
+     * @public
      * @type {string}
      * @memberof ProfileComponent
      */
-    private username: string;
+    public username: string;
     
     /**
      * the username of the user whose profile should be shown
      * 
-     * @private
+     * @public
      * @type {string}
      * @memberof ProfileComponent
      */
-    private profileUsername: string;
+    public profileUsername: string;
     
     /**
      * personal data of the profiled user
      * 
-     * @private
+     * @public
      * @type {User}
      * @memberof ProfileComponent
      */
-    private profileUserData: User;   
+    public profileUserData: User;   
 
 
     /**
      * posts of the profiled user
      * 
-     * @private
+     * @public
      * @type {Post[]}
      * @memberof ProfileComponent
      */
-    private profilePosts: Post[];     
+    public profilePosts: Post[];     
 
     /**
      * Creates an instance of ProfileComponent.
@@ -100,7 +100,7 @@ export class ProfileComponent implements OnInit{
      * @param {string} message - the content of the message to send
      * @memberof ProfileComponent
      */
-    private sendMessage(message: string): void {
+    public sendMessage(message: string): void {
         alert(message);
         this.messageService.addMessage(this.username, message, this.profileUsername)
         .then(()=>alert("Message Sent!"))
@@ -110,10 +110,10 @@ export class ProfileComponent implements OnInit{
     /**
      * subscribe to posts by this user
      * 
-     * @private
+     * @public
      * @memberof ProfileComponent
      */
-    private subscribe(): void {
+    public subscribe(): void {
         this.subscriptionService.addSubscription(this.username, this.profileUsername)
         .then(()=>alert("Subscribed!"))
     }

@@ -28,7 +28,7 @@ export class SearchComponent implements OnChanges{
      * @type {string}
      * @memberof SearchComponent
      */
-    private username: string;
+    public username: string;
 
     /**
      * the search pattern to match with searching users
@@ -36,7 +36,7 @@ export class SearchComponent implements OnChanges{
      * @type {string}
      * @memberof SearchComponent
      */
-    private searchPattern: string;
+    public searchPattern: string;
 
     /**
      * event to be emitted when a user is selected from the search results

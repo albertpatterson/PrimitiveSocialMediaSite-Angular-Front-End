@@ -22,7 +22,7 @@ export class PersonalDataService{
      * @private
      * @memberof PersonalDataService
      */
-    private _personalDataUrl = "/personalData";
+    private _personalDataUrl = "api/personalData";
 
     /**
      * Creates an instance of PersonalDataService.

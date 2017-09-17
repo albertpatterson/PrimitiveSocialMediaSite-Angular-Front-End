@@ -21,7 +21,7 @@ export class SubscriptionService{
      * @type {string}
      * @memberof SubscriptionService
      */
-    private _subscriptionUrl: string = "/subscription";
+    private _subscriptionUrl: string = "api/subscription";
 
     /**
      * Creates an instance of SubscriptionService.

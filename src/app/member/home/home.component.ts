@@ -48,16 +48,16 @@ export class HomeComponent implements OnInit{
      * @type {Post[]}
      * @memberof HomeComponent
      */
-    private followedPosts: Post[];
+    public followedPosts: Post[];
 
     /**
      * the number of messages available to the user
      * 
-     * @private
+     * @public
      * @type {number}
      * @memberof HomeComponent
      */
-    private messageCount: number;
+    public messageCount: number;
 
     /**
      * Creates an instance of HomeComponent.

@@ -24,29 +24,29 @@ export class PremiumComponent implements OnInit{
     /**
      * the name of the current user
      * 
-     * @private
+     * @public
      * @type {string}
      * @memberof PremiumComponent
      */
-    private username: string;
+    public username: string;
 
     /**
      * new premium content to be added
      * 
-     * @private
+     * @public
      * @type {*}
      * @memberof PremiumComponent
      */
-    private newContent: any;
+    public newContent: any;
 
     /**
      * groups of premium content for grid layout
      * 
-     * @private
+     * @public
      * @type {string[][]}
      * @memberof PremiumComponent
      */
-    private premiumGroups: string[][];
+    public premiumGroups: string[][];
 
     /**
      * Creates an instance of PremiumComponent.

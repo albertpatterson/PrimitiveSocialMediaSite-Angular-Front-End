@@ -21,7 +21,7 @@ export class PremiumService {
      * @private
      * @memberof PremiumService
      */
-    private _premiumUrl = "/premium";
+    private _premiumUrl = "api/premium";
     
     /**
      * Creates an instance of PremiumService.

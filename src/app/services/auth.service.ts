@@ -8,6 +8,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw'
 
+import {hashString} from "../utils/hashString";
+
 import {assertStatus, handleError} from '../utils/handleResponse'
 
 /**
@@ -26,7 +28,7 @@ export class AuthService{
      * @type {string}
      * @memberof AuthService
      */
-    private _loginUrl: string = "/session";
+    private _loginUrl: string = "api/session";
 
     /**
      * Creates an instance of AuthService.
@@ -48,9 +50,11 @@ export class AuthService{
      */
     tryLogin(username: string, password: string): Promise<{}>{
 
+        let hashPass = hashString(password);
+
         let data = new URLSearchParams();
         data.append('username', username);
-        data.append('password', password);
+        data.append('password', hashPass);
 
         return  new Promise((res: Function, rej: Function)=>{
                     this.http.post(this._loginUrl, data)

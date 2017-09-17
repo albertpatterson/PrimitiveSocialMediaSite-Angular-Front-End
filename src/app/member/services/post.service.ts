@@ -23,7 +23,7 @@ export class PostService{
      * @type {string}
      * @memberof PostService
      */
-    private _postUrl: string = "/post";
+    private _postUrl: string = "api/post";
 
     /**
      * Creates an instance of PostService.
