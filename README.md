@@ -1,5 +1,5 @@
-# Primitive Social Media Site (Angular Front End)
-This is a front end for the Primative Social Media Site project. This version of the front end is writting using Angular to provide the following features
+# Social Media Site (Angular Front End)
+This is a front end for the Social Media Site project. This version of the front end uses Angular and provides the following features
 - [x] components
   - [x] sign in page 
   - [x] member area
@@ -24,8 +24,8 @@ This repository contains just the source code for the front end and is thus not 
 Clone this repository, then run<br>
 $> npm install
 
-Build the files using <br>
-$> npm run build
+Build the files using Angular cli<br>
+$> ng build
 
 ## TODO
 - [ ] consider style improvements and animations
