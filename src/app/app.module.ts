@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -18,7 +18,9 @@ import { SignUpComponent } from './logIn/signUp/sign-up.component';
 
 
 import {AuthService} from './services/auth.service'
-import {SignUpService} from './services/sign-up.service'
+import {SignUpService} from './services/sign-up.service';
+
+import { TooltipModule } from './tooltip/tooltip.module'
 
 // import { AuthService } from './services/mock_auth.service';
 
@@ -28,7 +30,8 @@ import {SignUpService} from './services/sign-up.service'
                   FormsModule,
                   MemberModule,
                   AppRoutingModule,
-                  HttpModule
+                  HttpModule,
+                  TooltipModule
                    ],
 
   declarations: [ AppComponent,

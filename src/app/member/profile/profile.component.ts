@@ -101,7 +101,6 @@ export class ProfileComponent implements OnInit{
      * @memberof ProfileComponent
      */
     public sendMessage(message: string): void {
-        alert(message);
         this.messageService.addMessage(this.username, message, this.profileUsername)
         .then(()=>alert("Message Sent!"))
     }

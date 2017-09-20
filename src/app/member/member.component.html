@@ -3,11 +3,11 @@
     <div class="row">
     
         <div class="ad col-sm-6" id="ad1">
-            Add 1
+            Add 1 placeholder
         </div>
     
         <div class="ad col-sm-6" id="ad2">
-            Add 2
+            Add 2 placeholder
         </div>
     </div>
     
@@ -17,7 +17,7 @@
         
         <div    id="searchForm" 
                 class="col-sm-4">
-            
+            <tooltip left="0" bottom="0px" width="150px" message="Search for friends by name using regex, such as &quot; .* &quot;"></tooltip>  
             <div class="fullwidth">
                 
                 <input  type="text" 
@@ -33,22 +33,25 @@
         </div>
         
         <div class="col-sm-8">
+            <tooltip arrowLocation="top" left="0%" bottom="-140px" width="100px" message="Go to your home page to see posts"></tooltip>                  
             <div    class="btn-group fullwidth" 
                     role="group">
-                
                 <a  id="homeButton" 
                     class="btn btn-primary navButton" 
                     (click)="go('home')">home</a>
                 
+                <tooltip arrowLocation="top" left="35%" bottom="-140px" width="100px" message="View your private messages"></tooltip>  
                 <a  id="messagesButton" 
                     class="btn btn-primary navButton" 
                     (click)="go('messages')">
                     <span   id="messageCount" 
                             class="badge">{{messageCount}}</span>     messages</a>
                 
+                <tooltip left="60%" bottom="0px" width="100px" message="View and upload media"></tooltip>  
                 <a  id="premiumButton" 
                     class="btn btn-primary navButton" 
                     (click)="go('premium')">premium</a>
+                
                 
                 <button id="signOutButton" 
                         class="btn btn-primary navButton" 

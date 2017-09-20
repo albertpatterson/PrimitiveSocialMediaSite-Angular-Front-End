@@ -18,10 +18,13 @@ import {PersonalDataService} from './services/personal-data.service';
 import {PremiumService} from './services/premium.service';
 import {SubscriptionService} from './services/subscription.service';
 
+import { TooltipModule } from '../tooltip/tooltip.module'
+
 
 @NgModule({
     imports: [  CommonModule,
-                FormsModule],
+                FormsModule,
+                TooltipModule],
 
     declarations: [ MemberComponent, 
                     HomeComponent,

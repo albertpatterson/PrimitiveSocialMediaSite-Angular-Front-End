@@ -1,0 +1,6 @@
+<div class="customTooltipContainer" >
+  <div class="customTooltip" [ngClass]="arrowLocation" [style.left]="left" [style.bottom]="bottom" [style.width]="width" [style.visibility]="visibility">
+    <p class="exit"><a (click)="exit()">x</a></p>
+    <p class="message">{{message}}</p>
+  </div>
+</div>

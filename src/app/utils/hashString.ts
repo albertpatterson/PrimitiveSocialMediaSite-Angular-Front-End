@@ -1,3 +1,4 @@
+// import * as crypto from 'crypto';
 import {Md5} from 'ts-md5/dist/md5';
 
 export function hashString(string) : string{
