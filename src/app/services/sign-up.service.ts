@@ -11,25 +11,25 @@ import {hashString} from "../utils/hashString";
 
 /**
  * Service that allows new users to sign up for an account
- * 
+ *
  * @export
  * @class SignUpService
  */
 @Injectable()
 export class SignUpService{
-    
+
     /**
      * the url of the signUp resource
-     * 
+     *
      * @private
      * @memberof SignUpService
      */
-    private _signUpUrl = 'api/personalData';
+    private _signUpUrl = document.location.origin+':9000/social-media/api/personalData';
 
     /**
      * Creates an instance of SignUpService.
-     * @param {Http} http 
-     * @param {AuthService} authService 
+     * @param {Http} http
+     * @param {AuthService} authService
      * @memberof SignUpService
      */
     constructor(
@@ -39,20 +39,20 @@ export class SignUpService{
 
     /**
      * sign up for a member account and automatically sign in if successful
-     * 
+     *
      * @param {string} username - unique name of the user
      * @param {string} location - current location of the user
      * @param {string} DOB - the user's date of birth
      * @param {string} business - the business the user works in
      * @param {*} picture - the user's picture
      * @param {string} password - the user's password
-     * @returns {Promise<{}>} 
+     * @returns {Promise<{}>}
      * @memberof SignUpService
      */
     signUp(username: string, location: string, DOB: string, business: string, picture: any, password: string): Promise<{}>{
         console.log('send sign up request')
         return new Promise((res: Function, rej: Function)=>{
-        
+
             let hashPass = hashString(password);
 
             let formData: FormData = new FormData();

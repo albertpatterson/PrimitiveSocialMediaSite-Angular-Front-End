@@ -28,7 +28,7 @@ export class AuthService{
      * @type {string}
      * @memberof AuthService
      */
-    private _loginUrl: string = "api/session";
+    private _loginUrl: string = document.location.origin+":9000/social-media/api/session";
 
     /**
      * Creates an instance of AuthService.

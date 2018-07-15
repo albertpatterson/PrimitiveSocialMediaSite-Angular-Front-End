@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 
 /**
  * Service providing access to subscriptions
- * 
+ *
  * @export
  * @class SubscriptionService
  */
@@ -16,16 +16,16 @@ export class SubscriptionService{
 
     /**
      * url of the subscription resource
-     * 
+     *
      * @private
      * @type {string}
      * @memberof SubscriptionService
      */
-    private _subscriptionUrl: string = "api/subscription";
+    private _subscriptionUrl: string = document.location.origin+":9000/social-media/api/subscription";
 
     /**
      * Creates an instance of SubscriptionService.
-     * @param {Http} http 
+     * @param {Http} http
      * @memberof SubscriptionService
      */
     constructor(
@@ -34,9 +34,9 @@ export class SubscriptionService{
 
     /**
      * get the list of users followed by the current user
-     * 
-     * @param {string} username 
-     * @returns {Promise<String[]>} 
+     *
+     * @param {string} username
+     * @returns {Promise<String[]>}
      * @memberof SubscriptionService
      */
     getSubscriptions(username: string): Promise<String[]>{
@@ -50,15 +50,15 @@ export class SubscriptionService{
             .toPromise()
             .then((resp: Response)=>assertStatus(resolver, resp, 204, "Could not get subscriptions."))
             .catch((err: any)=>handleError(rej, err))
-        });  
+        });
     }
 
     /**
      * follow a user
-     * 
-     * @param {string} username 
-     * @param {string} followee 
-     * @returns {Promise<{}>} 
+     *
+     * @param {string} username
+     * @param {string} followee
+     * @returns {Promise<{}>}
      * @memberof SubscriptionService
      */
     addSubscription(username: string, followee: string): Promise<{}> {
@@ -71,15 +71,15 @@ export class SubscriptionService{
                     .toPromise()
                     .then((resp: Response)=>assertStatus(res, resp, 201, "Could not add subscription."))
                     .catch((err: any)=>handleError(rej, err))
-                });  
+                });
     }
 
     /**
      * unfollow a user
-     * 
-     * @param {string} username 
-     * @param {string} followee 
-     * @returns {Promise<{}>} 
+     *
+     * @param {string} username
+     * @param {string} followee
+     * @returns {Promise<{}>}
      * @memberof SubscriptionService
      */
     deleteSubscription(username: string, followee: string): Promise<{}> {
@@ -92,6 +92,6 @@ export class SubscriptionService{
             .toPromise()
             .then((resp: Response)=>assertStatus(res, resp, 204, "Could not delete subscription."))
             .catch((err: any)=>handleError(rej, err))
-        }); 
+        });
     }
 }

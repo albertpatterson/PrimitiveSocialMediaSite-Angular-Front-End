@@ -23,7 +23,7 @@ export class MessageService{
      * @type {string}
      * @memberof MessageService
      */
-    private _messageUrl: string = "api/message";
+    private _messageUrl: string = document.location.origin+":9000/social-media/api/message";
 
     /**
      * Creates an instance of MessageService.

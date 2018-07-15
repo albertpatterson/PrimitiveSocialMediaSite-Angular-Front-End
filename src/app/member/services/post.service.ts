@@ -23,7 +23,7 @@ export class PostService{
      * @type {string}
      * @memberof PostService
      */
-    private _postUrl: string = "api/post";
+    private _postUrl: string = document.location.origin+":9000/social-media/api/post";
 
     /**
      * Creates an instance of PostService.

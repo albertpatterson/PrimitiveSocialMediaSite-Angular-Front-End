@@ -9,10 +9,11 @@ import { SubscriptionService } from './../services/subscription.service';
 import { User } from '../User';
 import { Post } from '../Post';
 
+import { createUrl } from "../../utils/imageUrl";
 
 /**
  * Component that displays a user's profile
- * 
+ *
  * @export
  * @class ProfileComponent
  * @implements {OnInit}
@@ -27,47 +28,47 @@ export class ProfileComponent implements OnInit{
 
     /**
      * the username of the currently signed in user
-     * 
+     *
      * @public
      * @type {string}
      * @memberof ProfileComponent
      */
     public username: string;
-    
+
     /**
      * the username of the user whose profile should be shown
-     * 
+     *
      * @public
      * @type {string}
      * @memberof ProfileComponent
      */
     public profileUsername: string;
-    
+
     /**
      * personal data of the profiled user
-     * 
+     *
      * @public
      * @type {User}
      * @memberof ProfileComponent
      */
-    public profileUserData: User;   
+    public profileUserData: User;
 
 
     /**
      * posts of the profiled user
-     * 
+     *
      * @public
      * @type {Post[]}
      * @memberof ProfileComponent
      */
-    public profilePosts: Post[];     
+    public profilePosts: Post[];
 
     /**
      * Creates an instance of ProfileComponent.
-     * @param {PersonalDataService} personalDataService 
-     * @param {PostService} postService 
-     * @param {MessageService} messageService 
-     * @param {SubscriptionService} subscriptionService 
+     * @param {PersonalDataService} personalDataService
+     * @param {PostService} postService
+     * @param {MessageService} messageService
+     * @param {SubscriptionService} subscriptionService
      * @memberof ProfileComponent
      */
     constructor(
@@ -79,7 +80,7 @@ export class ProfileComponent implements OnInit{
 
     /**
      * get the personal data and posts of the profiled user in init
-     * 
+     *
      * @memberof ProfileComponent
      */
     ngOnInit(): void{
@@ -91,12 +92,12 @@ export class ProfileComponent implements OnInit{
                 .then(function(profilePosts: Post[]){
                     this.profilePosts = profilePosts;
                 }.bind(this))
-        }.bind(this))   
+        }.bind(this))
     }
 
     /**
      * send a message to the profiled user
-     * 
+     *
      * @param {string} message - the content of the message to send
      * @memberof ProfileComponent
      */
@@ -108,7 +109,7 @@ export class ProfileComponent implements OnInit{
 
     /**
      * subscribe to posts by this user
-     * 
+     *
      * @public
      * @memberof ProfileComponent
      */
@@ -116,4 +117,6 @@ export class ProfileComponent implements OnInit{
         this.subscriptionService.addSubscription(this.username, this.profileUsername)
         .then(()=>alert("Subscribed!"))
     }
+
+    public imageUrl = createUrl;
 }

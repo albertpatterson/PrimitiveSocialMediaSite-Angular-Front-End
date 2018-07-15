@@ -22,7 +22,7 @@ export class PersonalDataService{
      * @private
      * @memberof PersonalDataService
      */
-    private _personalDataUrl = "api/personalData";
+    private _personalDataUrl = document.location.origin+":9000/social-media/api/personalData";
 
     /**
      * Creates an instance of PersonalDataService.

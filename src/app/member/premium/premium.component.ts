@@ -5,6 +5,8 @@ import {PremiumService} from './../services/premium.service';
 
 import {PremiumContent} from '../PremiumContent';
 
+import { createUrl } from "../../utils/imageUrl";
+
 
 /**
  * Component providing viewing and purchase of premium content
@@ -41,16 +43,18 @@ export class PremiumComponent implements OnInit{
 
     /**
      * groups of premium content for grid layout
-     * 
+     *
      * @public
      * @type {string[][]}
      * @memberof PremiumComponent
      */
     public premiumGroups: string[][];
 
+    public imageUrl=createUrl;
+
     /**
      * Creates an instance of PremiumComponent.
-     * @param {PremiumService} premiumService 
+     * @param {PremiumService} premiumService
      * @memberof PremiumComponent
      */
     constructor(
@@ -59,7 +63,7 @@ export class PremiumComponent implements OnInit{
 
     /**
      * get the user's premium content and populate the grid on init
-     * 
+     *
      * @memberof PremiumComponent
      */
     ngOnInit(): void{
@@ -73,7 +77,7 @@ export class PremiumComponent implements OnInit{
 
     /**
      * submit new premium content
-     * 
+     *
      * @memberof PremiumComponent
      */
     onSubmit():void{
@@ -91,10 +95,10 @@ export class PremiumComponent implements OnInit{
 
     /**
      * create a grid
-     * 
-     * @param {any[]} items 
-     * @param {number} nCols 
-     * @returns 
+     *
+     * @param {any[]} items
+     * @param {number} nCols
+     * @returns
      * @memberof PremiumComponent
      */
     _toGrid(items: any[], nCols: number){
